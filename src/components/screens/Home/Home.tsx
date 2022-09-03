@@ -3,7 +3,7 @@ import styles from "./Home.module.scss";
 
 const Home: FC = () => {
     return (
-        <div>
+        <div className={styles.home}>
             Home
         </div>
     )

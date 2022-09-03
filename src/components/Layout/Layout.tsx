@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
-import Container from "../Container";
-import Header from "../Header";
+import Container from "@/components/Container";
+import Header from "@/components/Header";
 import styles from "./Layout.module.scss";
 
 interface LayoutProps {
