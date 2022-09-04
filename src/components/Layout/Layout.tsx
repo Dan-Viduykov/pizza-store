@@ -11,7 +11,7 @@ const Layout: FC<LayoutProps> = ({children}) => {
     return (
         <div className={styles.layout}>
             <Container>
-                <Header />
+                <Header className={styles.layout__header} />
                 {children}
             </Container>
         </div>

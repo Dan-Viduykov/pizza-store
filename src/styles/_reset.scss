@@ -15,7 +15,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-    font-family: 'Nunito', Roboto, system-ui, Tahoma
+    font-family: 'Nunito', Roboto, system-ui, Tahoma;
 }
 
 *, *::before, *::after {
@@ -147,6 +147,8 @@ textarea {
     margin: 0; /* 2 */
     vertical-align: baseline; /* 3 */
     *vertical-align: middle; /* 3 */
+    border: none;
+    outline: none;
 }
 
 button,
