@@ -1,0 +1,30 @@
+.sort {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &__icon {
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+    }
+
+    &__text {
+        margin-right: 8px;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 0.015em;
+        color: #2C2C2C;
+    }
+
+    &__button {
+        background: transparent;
+        border-bottom: 1px dashed #FE5F1E;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 0.015em;
+        color: #FE5F1E;
+    }
+}
