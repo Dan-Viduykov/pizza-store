@@ -10,8 +10,8 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = ({children}) => {
     return (
         <div className={styles.layout}>
-            <Header />
             <Container>
+                <Header />
                 {children}
             </Container>
         </div>
