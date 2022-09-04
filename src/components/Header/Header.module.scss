@@ -46,12 +46,21 @@
     &__button {
         padding: 15px 20px;
         display: flex;
+        justify-content: space-between;
+        align-items: center;
         background: #FE5F1E;
         border-radius: 30px;
         font-weight: 700;
         font-size: 16px;
         line-height: 19px;
         color: #FFFFFF;
+
+        svg {
+            width: 16px;
+            height: 16px;
+            margin-top: -3px;
+            margin-right: 8px;
+        }
 
         span:first-child {
             padding-right: 26px;
@@ -66,6 +75,11 @@
                 right: 0;
                 background: rgba(255, 255, 255, 0.25);
             }
+        }
+
+        span:last-child {
+            display: flex;
+            align-items: center;
         }
     }
 }

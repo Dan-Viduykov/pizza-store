@@ -16,7 +16,7 @@ const Header: FC<HeaderProps> = ({className}) => {
                 <Image
                     src={logo}
                     layout={'responsive'}
-                    priority={false}
+                    priority={true}
                     alt={'logo'}
                 />
             </div>

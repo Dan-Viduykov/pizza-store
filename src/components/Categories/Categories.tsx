@@ -2,24 +2,24 @@ import { FC } from "react";
 import styles from "./Categories.module.scss";
 
 const Categories: FC = () => {
-    const uuid = require('uuid')
+    const uniqid = require('uniqid')
     const catogories = ['Всё', 'Мясные', 'Вегитарианские', 'Гриль', 'Острые', 'Закрытые'];
 
-    const createItem = (title: string) => {
-        const id = uuid.v4();
+    const items = catogories.map(item => { 
+        const id = uniqid();
 
         return (
-            <li key={title} className={styles.categories__item}>
-                <input className={styles.categories__input} id={id} type="radio" name="category" />
-                <label className={styles.categories__label} htmlFor={id}>{title}</label>
+            <li key={uniqid()} className={styles.categories__item}>
+                <input className={styles.categories__input} id={item} type="radio" name="category" />
+                <label className={styles.categories__label} htmlFor={item}>{item}</label>
             </li>
         )
-    }
+    })
 
     return (
         <div className={styles.categories}>
             <ul className={styles.categories__list}>
-                {catogories.map(createItem)}
+                {items}
             </ul>
         </div>
     )
