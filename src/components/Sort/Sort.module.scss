@@ -20,11 +20,14 @@
 
     &__button {
         background: transparent;
-        border-bottom: 1px dashed #FE5F1E;
         font-weight: 400;
         font-size: 14px;
         line-height: 17px;
         letter-spacing: 0.015em;
         color: #FE5F1E;
+
+        &:hover {
+            border-bottom: 1px dashed #FE5F1E;
+        }
     }
 }
