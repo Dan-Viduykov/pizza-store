@@ -1,9 +1,15 @@
+@import '@/styles/main.scss';
+
 .layout {
     background-color: #FFDF8C;
     min-height: 100vh;
     padding: 45px 0 65px;
-
+    
     &__header {
         margin-bottom: 40px;
+    }
+    
+    @include display(720px) {
+        padding: 25px 0 35px;
     }
 }
