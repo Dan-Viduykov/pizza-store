@@ -86,12 +86,23 @@
         font-size: 16px;
         line-height: 19px;
         color: #EB5A1E;
+        transition: .1s;
+
+        &:hover {
+            color: #FFFFFF;
+            background: #EB5A1E;
+
+            span {
+                background: #FFFFFF;
+                color: #EB5A1E;
+            }
+        }
 
         svg {
             width: 14px;
             height: 14px;
             margin-right: 8px;
-            color: #EB5A1E;
+            color: inherit;
         }
         
         span {
@@ -103,6 +114,7 @@
             font-size: 13px;
             line-height: 16px;
             color: #FFFFFF;
+            transition: .1s;
         }
     }
 }

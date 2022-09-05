@@ -1,16 +1,18 @@
 import { FC } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import styles from "./PizzaCard.module.scss";
 
 interface IPizza {
     id: number;
-    image: StaticImageData;
-    name: string;
+    image: string;
+    title: string;
     thickness: string[];
     sizes: number[];
     startPrice: number;
+    category: string,
+    rating: number
 }
 
 interface PizzaCardProps {
@@ -20,13 +22,22 @@ interface PizzaCardProps {
 
 const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
     const uniqid = require('uniqid')
-    const { id, image, name, thickness, sizes, startPrice } = pizza
+    const { id, image, title, thickness, sizes, startPrice } = pizza
     return (
         <div className={styles.card}>
             <div className={styles.card__img}>
-                <Image src={image} alt={name} layout="responsive" priority={true} unoptimized />
+                <Image
+                    loader={() => image}
+                    src={image}
+                    alt={title}
+                    width={'100%'}
+                    height={'100%'}
+                    layout="responsive"
+                    priority={false}
+                    unoptimized
+                />
             </div>
-            <h4 className={styles.card__title}>{name}</h4>
+            <h4 className={styles.card__title}>{title}</h4>
             <div className={styles.card__modify}>
                 <ul className={styles.card__thickness}>
                     {thickness.map(item => <li key={uniqid()}>{item}</li>)}
