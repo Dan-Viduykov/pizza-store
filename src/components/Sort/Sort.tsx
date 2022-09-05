@@ -13,7 +13,7 @@ const Sort: FC = () => {
 
     return (
         <div className={styles.sort}>
-            <FontAwesomeIcon className={styles.sort__icon} icon={active ? faSquareCaretDown : faCaretSquareUp} />
+            <FontAwesomeIcon className={styles.sort__icon} icon={active ? faCaretSquareUp : faSquareCaretDown} />
             <span className={styles.sort__text}>Сортировка по:</span>
             <button className={styles.sort__button} onClick={handleClick}>популярности</button>
             <SortList active={active} />
