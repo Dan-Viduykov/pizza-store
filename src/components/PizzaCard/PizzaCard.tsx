@@ -3,6 +3,7 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import styles from "./PizzaCard.module.scss";
+import Modify from "./Modify";
 
 interface IPizza {
     id: number;
@@ -21,8 +22,9 @@ interface PizzaCardProps {
 }
 
 const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
-    const uniqid = require('uniqid')
-    const { id, image, title, thickness, sizes, startPrice } = pizza
+    const uniqid = require('uniqid');
+    const { id, image, title, thickness, sizes, startPrice } = pizza;
+
     return (
         <div className={styles.card}>
             <div className={styles.card__img}>
@@ -39,12 +41,8 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
             </div>
             <h4 className={styles.card__title}>{title}</h4>
             <div className={styles.card__modify}>
-                <ul className={styles.card__thickness}>
-                    {thickness.map(item => <li key={uniqid()}>{item}</li>)}
-                </ul>
-                <ul className={styles.card__sizes}>
-                    {sizes.map(item => <li key={uniqid()}>{item} см.</li>)}
-                </ul>
+                <Modify className={styles.card__thickness} modifys={['тонкое', 'традиционное' ]} permittedModifys={thickness} />
+                <Modify modifys={[26, 30, 40]} permittedModifys={sizes} />
             </div>
             <div className={styles.card__bottom}>
                 <span className={styles.card__price}>от {startPrice} ₽</span>
