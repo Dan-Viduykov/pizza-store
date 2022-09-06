@@ -7,7 +7,7 @@
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
     border-radius: 10px;
  
-    &__item {
+    & > li {
         padding: 10px 15px;
         width: 100%;
         font-weight: 400;

@@ -1,33 +1,40 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styles from "./SortList.module.scss";
 
 interface SortListProps {
     className?: string;
     active?: boolean;
+    sorting: {
+        popularity: string,
+        price: string,
+        alphabet: string
+    };
+    setSort: (sortState: string) => void;
+    setActive: (active: boolean) => void;
 }
 
-const SortList: FC<SortListProps> = ({className, active = false}) => {
-    const uniqid = require('uniqid')
-    const sortingCategories = ['популярности', 'по цене', 'по алфавиту'];
+const SortList: FC<SortListProps> = ({className, active = false, sorting, setSort, setActive}) => {
+    const [ activeIdx, setActiveIdx ] = useState(0);
+    
+    const handleClick = (index: number, sortingTitle: string) => {
+        setActiveIdx(index);
+        setSort(sortingTitle);
+        setActive(false);
+        const sortKey = Object.keys(sorting)[index];
+    }
 
-    const sortingItems = sortingCategories.map(item => {
+    const sortingItems = Object.values(sorting).map((item: string, index) => {
+        const uniqid = require('uniqid');
+
         return (
-            <li key={uniqid()} className={styles.list__item}>
+            <li key={uniqid()} onClick={() => handleClick(index, item)}>
                 {item}
             </li>
         )
     })
 
     return (
-        <>
-            {
-                active && 
-                <ul className={styles.list}>
-                    {sortingItems}
-                </ul>
-            }
-        </>
-        
+        <> {active && <ul className={styles.list}>{sortingItems}</ul>} </>
     )
 }
 
