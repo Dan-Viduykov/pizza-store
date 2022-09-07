@@ -1,9 +1,9 @@
 import { FC } from "react";
 import Image from "next/image";
+import Modify from "./Modify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import styles from "./PizzaCard.module.scss";
-import Modify from "./Modify";
 
 interface IPizza {
     id: number;

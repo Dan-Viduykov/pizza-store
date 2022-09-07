@@ -1,9 +1,12 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import PizzaCard from "@/components/PizzaCard";
+import Skeleton from "@/components/PizzaCard/Skeleton";
 import styles from "./PizzaList.module.scss";
 
 const PizzaList: FC = () => {
     const uniqid = require('uniqid')
+    const [ isLoading, setIsLoading ] = useState(false);
+    
     const pizzas = [
         {
             "id": 1,
@@ -218,11 +221,14 @@ const PizzaList: FC = () => {
         }
     ]
 
-    const items = pizzas.map(item => <PizzaCard key={item.id} className={styles.list__item} pizza={item} />)
+    const skeletons = [...new Array(4)].map((item, idx) => <Skeleton key={idx} />)
+    const pizzasElements = pizzas.map(item => <PizzaCard key={item.id} className={styles.list__item} pizza={item} />)
+
+    const content = isLoading ? skeletons : pizzasElements 
 
     return (
         <ul className={styles.list}>
-            {items}
+            {content}
         </ul>
     )
 }
