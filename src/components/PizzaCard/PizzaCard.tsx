@@ -7,11 +7,11 @@ import Modify from "./Modify";
 
 interface IPizza {
     id: number;
-    image: string;
+    imageUrl: string;
     title: string;
     thickness: string[];
     sizes: number[];
-    startPrice: number;
+    price: number;
     category: string,
     rating: number
 }
@@ -23,14 +23,14 @@ interface PizzaCardProps {
 
 const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
     const uniqid = require('uniqid');
-    const { id, image, title, thickness, sizes, startPrice } = pizza;
+    const { id, imageUrl, title, thickness, sizes, price } = pizza;
 
     return (
         <div className={styles.card}>
             <div className={styles.card__img}>
                 <Image
-                    loader={() => image}
-                    src={image}
+                    loader={() => imageUrl}
+                    src={imageUrl}
                     alt={title}
                     width={'100%'}
                     height={'100%'}
@@ -45,7 +45,7 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
                 <Modify modifys={[26, 30, 40]} permittedModifys={sizes} />
             </div>
             <div className={styles.card__bottom}>
-                <span className={styles.card__price}>от {startPrice} ₽</span>
+                <span className={styles.card__price}>от {price} ₽</span>
                 <button className={styles.card__button}>
                     <FontAwesomeIcon icon={faPlus} />
                     Добавить 

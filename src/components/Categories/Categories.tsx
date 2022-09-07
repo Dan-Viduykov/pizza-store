@@ -1,4 +1,4 @@
-import { FC, MouseEvent, useState } from "react";
+import { FC, useState } from "react";
 import styles from "./Categories.module.scss";
 
 const Categories: FC = () => {
