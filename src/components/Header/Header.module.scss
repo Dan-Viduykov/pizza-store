@@ -6,6 +6,12 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+    flex-wrap: wrap;
+
+    @include display(540px) {
+        justify-content: center;
+        text-align: center;
+    }
 
     &::after {
         content: '';
@@ -21,6 +27,15 @@
         width: 38px;
         height: 38px;
         margin-right: 17px;
+
+        @include display(540px) {
+            width: 60px;
+            height: 60px;
+        }
+        @include display(425px) {
+            margin-right: 0;
+            margin-bottom: 16px;
+        }
     }
 
     &__info {
@@ -54,6 +69,10 @@
         font-size: 16px;
         line-height: 19px;
         color: #FFFFFF;
+
+        @include display(540px) {
+            margin-top: 16px;
+        }
 
         svg {
             width: 16px;
