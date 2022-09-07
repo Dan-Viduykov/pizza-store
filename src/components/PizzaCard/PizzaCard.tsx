@@ -1,20 +1,11 @@
 import { FC } from "react";
 import Image from "next/image";
 import Modify from "./Modify";
+import { IPizza } from "@/services/pizza.types";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import styles from "./PizzaCard.module.scss";
-
-interface IPizza {
-    id: number;
-    imageUrl: string;
-    title: string;
-    thickness: string[];
-    sizes: number[];
-    price: number;
-    category: string,
-    rating: number
-}
 
 interface PizzaCardProps {
     className?: string;
@@ -22,7 +13,6 @@ interface PizzaCardProps {
 }
 
 const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
-    const uniqid = require('uniqid');
     const { id, imageUrl, title, thickness, sizes, price } = pizza;
 
     return (

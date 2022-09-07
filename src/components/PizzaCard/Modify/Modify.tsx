@@ -15,11 +15,9 @@ const Modify: FC<ModifyProps> = ({className, permittedModifys, modifys}) => {
     }
     
     const items = modifys.map((item, index) => {
-        const uniqid = require('uniqid');
-
         return (
             <li
-                key={uniqid()}
+                key={index}
                 onClick={() => handleClick(index)}
                 className={`
                     ${styles.modifys__item}
