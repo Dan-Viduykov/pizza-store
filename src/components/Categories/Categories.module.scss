@@ -13,7 +13,10 @@
     width: 100%;
     display: flex;
     align-items: center;
-    overflow-x: scroll;
+    
+    @include display(1440px) {
+        overflow-x: scroll;
+    }
 }
 
 .item {
