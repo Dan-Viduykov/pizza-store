@@ -7,11 +7,11 @@ import styles from "./Home.module.scss";
 const Home: FC = () => {
     return (
         <div className={styles.home}>
-            <div className={styles.home__actions}>
-                <Categories />
-                <Sort />
+            <div className={styles.actions}>
+                <Categories className={styles.categories} />
+                <Sort className={styles.sorting} />
             </div>
-            <h2 className={styles.home__title}>Все пиццы</h2>
+            <h2 className={styles.title}>Все пиццы</h2>
             <PizzaList />
         </div>
     )

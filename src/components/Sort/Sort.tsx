@@ -4,7 +4,11 @@ import { faCaretSquareUp, faSquareCaretDown } from "@fortawesome/free-regular-sv
 import SortList from "./SortList";
 import styles from "./Sort.module.scss";
 
-const Sort: FC = () => {
+interface SortProps {
+    className?: string;
+}
+
+const Sort: FC<SortProps> = ({className}) => {
     const [ active, setActive ] = useState(false);
     const [ sort, setSort ] = useState('популярности');
 
@@ -19,7 +23,7 @@ const Sort: FC = () => {
     }
 
     return (
-        <div className={styles.sort}>
+        <div className={`${styles.sort} ${className}`}>
             <FontAwesomeIcon className={styles.sort__icon} icon={active ? faCaretSquareUp : faSquareCaretDown} />
             <span className={styles.sort__text}>Сортировка по:</span>
             <button className={styles.sort__button} onClick={handleClick}>{sort}</button>

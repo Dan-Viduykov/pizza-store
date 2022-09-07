@@ -1,7 +1,11 @@
 import { FC, useState } from "react";
 import styles from "./Categories.module.scss";
 
-const Categories: FC = () => {
+interface CategoriesProps {
+    className?: string;
+}
+
+const Categories: FC<CategoriesProps> = ({className}) => {
     const uniqid = require('uniqid')
     const [ activeIdx, setActiveIdx ] = useState(0)
     const catogories = ['Всe', 'Мясные', 'Вегитарианские', 'Гриль', 'Острые', 'Закрытые'];
@@ -15,8 +19,8 @@ const Categories: FC = () => {
             <li
                 key={uniqid()}
                 className={`
-                    ${styles.categories__item}
-                    ${activeIdx === index ? styles.categories__item_active : false}
+                    ${styles.item}
+                    ${activeIdx === index ? styles.item_active : false}
                 `}
                 onClick={() => handleClick(index)}
             >
@@ -26,8 +30,8 @@ const Categories: FC = () => {
     });
 
     return (
-        <div className={styles.categories}>
-            <ul className={styles.categories__list}>
+        <div className={`${styles.categories} ${className}`}>
+            <ul className={styles.list}>
                 {items}
             </ul>
         </div>

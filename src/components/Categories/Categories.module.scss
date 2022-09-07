@@ -1,23 +1,40 @@
+@import '@/styles/main.scss';
+
 .categories {
-    &__list {
-        display: flex;
-        align-items: center;
+    max-width: 80%;
+    overflow: hidden;
+
+    @include display (1440px) {
+        max-width: 100%;
+    }
+}
+
+.list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: scroll;
+}
+
+.item {
+    margin-right: 16px;
+    padding: 15px 30px;
+    background: #F9F9F9;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.015em;
+    transition: .2s;
+    cursor: pointer;
+    
+    @include display(720px) {
+        margin-right: 12px;
+        padding: 10px 20px
     }
 
-    &__item {
-        padding: 15px 30px;
-        background: #F9F9F9;
-        border-radius: 30px;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 19px;
-        letter-spacing: 0.015em;
-        transition: .2s;
-        cursor: pointer;
-
-        &_active {
-            background: #282828;
-            color: #F9F9F9;
-        }
+    &_active {
+        background: #282828;
+        color: #F9F9F9;
     }
 }
