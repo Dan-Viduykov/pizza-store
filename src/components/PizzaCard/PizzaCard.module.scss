@@ -1,3 +1,5 @@
+@import '@/styles/main.scss';
+
 .card {
     overflow: hidden;
 
@@ -41,6 +43,13 @@
         font-size: 22px;
         line-height: 27px;
         letter-spacing: 0.015em;
+
+        @include display(720px) {
+            font-size: 18px;
+        }
+        @include display(540px) {
+            font-size: 22px;
+        }
     }
 
     &__button {
@@ -55,6 +64,14 @@
         line-height: 19px;
         color: #EB5A1E;
         transition: .1s;
+
+        @include display(720px) {
+            padding: 7px 11px;
+        }
+        @include display(540px) {
+            padding: 9px 15px;
+        }
+        
 
         &:hover {
             color: #FFFFFF;
@@ -71,6 +88,13 @@
             height: 14px;
             margin-right: 8px;
             color: inherit;
+
+            @include display(720px) {
+                margin-right: 4px;
+            }
+            @include display(540px) {
+                margin-right: 8px;
+            }
         }
         
         span {
@@ -83,6 +107,13 @@
             line-height: 16px;
             color: #FFFFFF;
             transition: .1s;
+
+            @include display(720px) {
+                margin-left: 4px;
+            }
+            @include display(540px) {
+                margin-left: 8px;
+            }
         }
     }
 }

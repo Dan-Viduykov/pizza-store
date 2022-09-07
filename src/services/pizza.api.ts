@@ -8,6 +8,9 @@ export const pizzaApi = createApi({
     getAllPizzas: builder.query<IPizza[], void>({
       query: () => `items`
     }),
+    getOnePizza: builder.query<IPizza, number>({
+      query: (id) => `items/${id}`
+    }),
   }),
 })
 

@@ -3,9 +3,26 @@
 .list {
     width: 100%;
     display: grid;
-    grid-template: auto auto / repeat(4, 1fr);
-    column-gap: 35px;
-    row-gap: 65px;
+    grid-template: repeat(2, 1fr) / repeat(4, 1fr);
+    gap: 65px 35px;
+    
+    @include display(1440px) {
+        grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+    }
+    @include display(960px) {
+        grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+        gap: 50px 20px;
+    }
+    @include display(540px) {
+        padding: 0 35px;
+        grid-template: repeat(2, 1fr) / repeat(1, 1fr);
+        gap: 40px 0;
+    }
+    @include display(425px) {
+        padding: 0;
+        grid-template: repeat(2, 1fr) / repeat(1, 1fr);
+        gap: 40px 0;
+    }
 
     &__item {
     }
