@@ -59,16 +59,16 @@
     }
 
     &__button {
-        padding: 15px 20px;
+        @extend .btn_reverse;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: #FE5F1E;
-        border-radius: 30px;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 19px;
-        color: #FFFFFF;
+
+        &:hover {
+            span:first-child::after {
+                background: $primary;
+            }
+        }
 
         @include display(540px) {
             margin-top: 16px;
@@ -93,6 +93,7 @@
                 position: absolute;
                 right: 0;
                 background: rgba(255, 255, 255, 0.25);
+                transition: .2s;
             }
         }
 

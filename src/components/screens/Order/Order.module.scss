@@ -59,10 +59,21 @@
         @extend .btn_back;
         border: none;
         font-weight: 400;
+
+        &:hover {
+            color: $black;
+            background: transparent;
+        }
     }
 
     &_back {
         @extend .btn_back;
+
+        &:hover {
+            background: $black;
+            border-color: $black;
+            color: $white;
+        }
 
         span {
             margin-left: 8px;
@@ -70,6 +81,6 @@
     }
 
     &_pay {
-        @extend .btn_pay;
+        @extend .btn_reverse;
     }
 }

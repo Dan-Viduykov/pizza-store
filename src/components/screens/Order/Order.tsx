@@ -1,9 +1,9 @@
 import { FC } from "react";
+import { useRouter } from "next/router";
 import OrderList from "@/components/OrderList";
-import styles from "./Order.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faChevronLeft, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { useRouter } from "next/router";
+import styles from "./Order.module.scss";
 
 const Order: FC = () => {
     const router = useRouter();

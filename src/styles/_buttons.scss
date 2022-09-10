@@ -7,12 +7,23 @@
     line-height: 19px;
     font-weight: 700;   
     letter-spacing: 0.01em;
+    transition: .2s;
+
+    &:hover {
+        background: $primary;
+        color: $white
+    }
 }
 
-.btn_pay {
+.btn_reverse {
     @extend .btn;
     background: $primary;
     color: $white;
+
+    &:hover {
+        background: $white;
+        color: $primary
+    }
 }
 
 .btn_circle {
