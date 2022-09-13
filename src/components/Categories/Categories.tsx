@@ -1,3 +1,4 @@
+import { useActions } from "@/hooks/useActions";
 import { FC, useState } from "react";
 import styles from "./Categories.module.scss";
 
@@ -6,18 +7,27 @@ interface CategoriesProps {
 }
 
 const Categories: FC<CategoriesProps> = ({className}) => {
-    const uniqid = require('uniqid')
-    const [ activeIdx, setActiveIdx ] = useState(0)
-    const catogories = ['Всe', 'Мясные', 'Вегитарианские', 'Гриль', 'Острые', 'Закрытые'];
-
+    const [ activeIdx, setActiveIdx ] = useState(0);
+    const { changeFilter } = useActions();
+    
+    const catogories = {
+        all :'Всe',
+        meat :'Мясные',
+        vegan :'Вегитарианские',
+        gril :'Гриль',
+        spicy :'Острые',
+        closed :'Закрытые'
+    };
+    
     const handleClick = (idx: number) => {
-        setActiveIdx(idx)
+        setActiveIdx(idx);
+        changeFilter(Object.keys(catogories)[activeIdx])
     }
-
-    const items = catogories.map((item, index) => {
+    
+    const items = Object.values(catogories).map((item, index) => {
         return (
             <li
-                key={uniqid()}
+                key={index}
                 className={`
                     ${styles.item}
                     ${activeIdx === index ? styles.item_active : false}

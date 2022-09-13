@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IPizza } from './pizza.types'
+import { IBaseQuery, IPizza } from './pizza.types'
 
 export const pizzaApi = createApi({
   reducerPath: 'pizza/api',
@@ -14,4 +14,7 @@ export const pizzaApi = createApi({
   }),
 })
 
-export const { useGetAllPizzasQuery } = pizzaApi
+export const {
+  useGetAllPizzasQuery,
+  useGetOnePizzaQuery
+} = pizzaApi

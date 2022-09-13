@@ -8,3 +8,8 @@ export interface IPizza {
     category: string;
     rating: number;
 }
+
+export interface IBaseQuery {
+    sorting?: string;
+    filter?: string;
+}
