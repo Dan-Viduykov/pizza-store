@@ -6,9 +6,9 @@ interface SortListProps {
     className?: string;
     active?: boolean;
     sorting: {
-        popularity: string,
+        rating: string,
         price: string,
-        alphabet: string
+        title: string
     };
     setSort: (sortState: string) => void;
     setActive: (active: boolean) => void;

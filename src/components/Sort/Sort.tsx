@@ -13,9 +13,9 @@ const Sort: FC<SortProps> = ({className}) => {
     const [ sort, setSort ] = useState('популярности');
 
     const sortingCategories = {
-        popularity: 'популярности',
+        rating: 'популярности',
         price: 'по цене',
-        alphabet: 'по алфавиту'
+        title: 'по алфавиту'
     };
 
     const handleClick = () => {

@@ -11,10 +11,14 @@ export const pizzaApi = createApi({
     getOnePizza: builder.query<IPizza, number>({
       query: (id) => `items/${id}`
     }),
+    getAllPizzasSorting: builder.query<IPizza[], IBaseQuery>({
+      query: ({sorting = 'rating'}) => `items?sortBy=${sorting}&order=${sorting === 'title' ? 'asc' : 'desc'}`
+    }),
   }),
 })
 
 export const {
   useGetAllPizzasQuery,
-  useGetOnePizzaQuery
+  useGetOnePizzaQuery,
+  useGetAllPizzasSortingQuery
 } = pizzaApi

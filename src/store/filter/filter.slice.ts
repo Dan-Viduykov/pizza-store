@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface filterState {
-  sorting: "popularity" | "price" | "alphabet";
+  sorting: "rating" | "price" | "title";
   filter: string;
 }
 
 const initialState: filterState = {
-  sorting: "popularity",
+  sorting: "rating",
   filter: "all",
 }
 
