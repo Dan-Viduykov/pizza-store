@@ -14,8 +14,8 @@ const Sort: FC<SortProps> = ({className}) => {
 
     const sortingCategories = {
         rating: 'популярности',
-        price: 'по цене',
-        title: 'по алфавиту'
+        price: 'цене',
+        title: 'алфавиту'
     };
 
     const handleClick = () => {
