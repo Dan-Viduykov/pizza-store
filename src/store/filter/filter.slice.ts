@@ -1,9 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-
-export interface filterState {
-  sorting: "rating" | "price" | "title";
-  filter: string;
-}
+import { filterState } from './filter.types';
 
 const initialState: filterState = {
   sorting: "rating",

@@ -1,6 +1,15 @@
-import { useActions } from "@/hooks/useActions";
 import { FC, useState } from "react";
+import { useActions } from "@/hooks/useActions";
 import styles from "./Categories.module.scss";
+
+const catogories = {
+    all :'Всe',
+    meat :'Мясные',
+    vegan :'Вегитарианские',
+    gril :'Гриль',
+    spicy :'Острые',
+    closed :'Закрытые'
+};
 
 interface CategoriesProps {
     className?: string;
@@ -10,29 +19,19 @@ const Categories: FC<CategoriesProps> = ({className}) => {
     const [ activeIdx, setActiveIdx ] = useState(0);
     const { changeFilter } = useActions();
     
-    const catogories = {
-        all :'Всe',
-        meat :'Мясные',
-        vegan :'Вегитарианские',
-        gril :'Гриль',
-        spicy :'Острые',
-        closed :'Закрытые'
-    };
-    
     const handleClick = (idx: number) => {
         setActiveIdx(idx);
-        changeFilter(Object.keys(catogories)[activeIdx])
+        changeFilter(Object.keys(catogories)[idx])
     }
     
-    const items = Object.values(catogories).map((item, index) => {
+    const items = Object.values(catogories).map((item, idx) => {
         return (
-            <li
-                key={index}
+            <li key={idx}
                 className={`
                     ${styles.item}
-                    ${activeIdx === index ? styles.item_active : false}
+                    ${activeIdx === idx ? styles.item_active : false}
                 `}
-                onClick={() => handleClick(index)}
+                onClick={() => handleClick(idx)}
             >
                 {item}
             </li>
