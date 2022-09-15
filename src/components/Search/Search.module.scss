@@ -1,0 +1,28 @@
+@import "@/styles/main.scss";
+
+.wrap {
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+    top: 11px;
+    left: 15px;
+    color: $gray;
+}
+
+.input {
+    width: 300px;
+    padding: 10px 15px 10px 40px;
+    border: 1px solid $gray;
+    border-radius: 10px;
+    color: $black;
+
+    &:focus {
+        border-color: $black;
+    }
+
+    &::placeholder {
+        color: $gray;
+    }
+}

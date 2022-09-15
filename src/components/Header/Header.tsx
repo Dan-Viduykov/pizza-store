@@ -5,6 +5,7 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from '@/assets/logo.png'
 import styles from "./Header.module.scss";
+import Search from "../Search";
 
 interface HeaderProps {
     className?: string;
@@ -27,6 +28,7 @@ const Header: FC<HeaderProps> = ({className}) => {
                 <h1 className={styles.header__title}>REACT PIZZA</h1>
                 <p className={styles.header__description}>самая вкусная пицца во вселенной</p>
             </div>
+            <Search className={styles.search} />
             <button className={styles.header__button} onClick={() => router.push('/order')}>
                 <span>520 ₽</span>
                 <span><FontAwesomeIcon icon={faCartShopping} /> 3</span>
