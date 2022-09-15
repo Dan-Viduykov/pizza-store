@@ -16,7 +16,7 @@ const Header: FC<HeaderProps> = ({className}) => {
 
     return (
         <header className={`${styles.header} ${className}`}>
-            <div className={styles.header__logo}>
+            <div className={styles.logo}>
                 <Image
                     src={logo}
                     layout={'responsive'}
@@ -24,12 +24,12 @@ const Header: FC<HeaderProps> = ({className}) => {
                     alt={'logo'}
                 />
             </div>
-            <div className={styles.header__info}>
-                <h1 className={styles.header__title}>REACT PIZZA</h1>
-                <p className={styles.header__description}>самая вкусная пицца во вселенной</p>
+            <div className={styles.info}>
+                <h1 className={styles.title}>REACT PIZZA</h1>
+                <p className={styles.description}>самая вкусная пицца во вселенной</p>
             </div>
             <Search className={styles.search} />
-            <button className={styles.header__button} onClick={() => router.push('/order')}>
+            <button className={styles.button} onClick={() => router.push('/order')}>
                 <span>520 ₽</span>
                 <span><FontAwesomeIcon icon={faCartShopping} /> 3</span>
             </button>
