@@ -1,0 +1,30 @@
+@import '@/styles/main.scss';
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li { 
+        a {
+            @extend .btn_circle;
+            width: 40px;
+            height: 40px;
+            padding-top: 2px;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+        }
+    }
+
+    :global {
+        .selected {
+            a {
+                background-color: $primary;
+                color: $white;
+            }
+        }
+    }
+}

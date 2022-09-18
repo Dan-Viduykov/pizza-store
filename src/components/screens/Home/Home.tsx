@@ -1,8 +1,9 @@
-import Categories from "@/components/Categories";
-import PizzaList from "@/components/PizzaList";
-import Sort from "@/components/Sort";
 import { FC } from "react";
+import Sort from "@/components/Sort";
+import PizzaList from "@/components/PizzaList";
+import Categories from "@/components/Categories";
 import styles from "./Home.module.scss";
+import Pagination from "@/components/Pagination";
 
 const Home: FC = () => {
     return (
@@ -13,6 +14,7 @@ const Home: FC = () => {
             </div>
             <h2 className={styles.title}>Все пиццы</h2>
             <PizzaList />
+            <Pagination />
         </div>
     )
 }
