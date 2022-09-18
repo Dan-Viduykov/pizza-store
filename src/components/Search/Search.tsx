@@ -1,15 +1,24 @@
-import { FC, useState } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "./Search.module.scss";
 import { useActions } from "@/hooks/useActions";
+import { useDebounce } from "@/hooks/useDebonce";
+import styles from "./Search.module.scss";
 
 interface SearchProps {
     className?: string;
 }
 
 const Search: FC<SearchProps> = ({className}) => {
-    const [ value, setValue ] = useState('');
+    const { changeQuery } = useActions();
+    const [ value, setValue ] = useState('')
+    const { debouncedValue, setDebouncedValue } = useDebounce(value.trim(), 300);
+    
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setValue(e.target.value)
+    }
+
+    changeQuery(debouncedValue)
 
     return (
         <div className={`${styles.wrap} ${className}`}>   
@@ -18,7 +27,7 @@ const Search: FC<SearchProps> = ({className}) => {
                 className={styles.input}
                 type="text"
                 placeholder="Поиск пиццы ..."
-                onChange={(e) => setValue(e.target.value)}
+                onChange={handleChange}
                 value={value} />
         </div>
     )

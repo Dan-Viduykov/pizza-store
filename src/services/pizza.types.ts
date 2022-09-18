@@ -12,4 +12,5 @@ export interface IPizza {
 export interface IBaseQuery {
     sorting?: string;
     filter?: string;
+    query?: string;
 }

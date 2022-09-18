@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IBaseQuery, IPizza } from './pizza.types'
 
+// TODO реализовать пагинацию по страницам с пиццами 
+
 export const pizzaApi = createApi({
   reducerPath: 'pizza/api',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://6316e783cb0d40bc41465bdf.mockapi.io/' }),
@@ -9,8 +11,16 @@ export const pizzaApi = createApi({
       query: (id) => `items/${id}`
     }),
     getAllPizzas: builder.query<IPizza[], IBaseQuery>({
-      query: ({sorting = 'rating', filter = 'all'}) => {
-        return `items?sortBy=${sorting}&order=${sorting === 'title' ? 'asc' : 'desc'}&category=${filter === 'all' ? '' : filter}`
+      query: (arg) => {
+        const {sorting = 'rating', filter = 'all', query} = arg
+        const sortBy = `&sortBy=${sorting}`
+        const order = `&order=${sorting === 'title' ? 'asc' : 'desc'}`
+        const category = `&category=${filter === 'all' ? '' : filter}`
+        const search = `&search=${query}`
+        
+        return {
+          url: `items?${sortBy}${order}${query ? '' : category}${!query ? '' : search}`
+        }
       }
     }),
   }),

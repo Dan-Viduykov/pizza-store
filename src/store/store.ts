@@ -1,12 +1,14 @@
 import { createWrapper } from 'next-redux-wrapper';
 import { configureStore } from '@reduxjs/toolkit'
 import { pizzaApi } from '@/services/pizza.api'
-import { filterReducer } from '@/store/filter/filter.slice';
+import { filterReducer } from './filter/filter.slice';
+import { searchReducer } from './search/search.slice';
 
 export function makeStore() {
     return configureStore({
         reducer: {
             filterReducer,
+            searchReducer,
             [pizzaApi.reducerPath]: pizzaApi.reducer,
         },
         middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(pizzaApi.middleware),
