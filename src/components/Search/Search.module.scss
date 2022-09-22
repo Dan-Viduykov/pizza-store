@@ -4,16 +4,24 @@
     position: relative;
 }
 
-.icon {
+.iconSearch {
     position: absolute;
     top: 11px;
     left: 15px;
     color: $gray;
 }
 
+.iconClear {
+    position: absolute;
+    top: 1px;
+    right: 5px;
+    padding: 10px;
+    color: $gray;
+}
+
 .input {
     width: 300px;
-    padding: 10px 15px 10px 40px;
+    padding: 10px 40px;
     border: 1px solid $gray;
     border-radius: 10px;
     color: $black;

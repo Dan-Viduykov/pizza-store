@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, useState } from "react";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useActions } from "@/hooks/useActions";
 import { useDebounce } from "@/hooks/useDebonce";
@@ -18,17 +18,32 @@ const Search: FC<SearchProps> = ({className}) => {
         setValue(e.target.value)
     }
 
+    const handleClick = () => {
+        setValue('')
+    }
+
     changeQuery(debouncedValue)
 
     return (
         <div className={`${styles.wrap} ${className}`}>   
-            <FontAwesomeIcon className={styles.icon} icon={faSearch} />
+            <FontAwesomeIcon className={styles.iconSearch} icon={faSearch} />
             <input
                 className={styles.input}
                 type="text"
                 placeholder="Поиск пиццы ..."
                 onChange={handleChange}
                 value={value} />
+            { value 
+                ?
+                <button>
+                    <FontAwesomeIcon
+                        className={styles.iconClear}
+                        icon={faXmark}
+                        onClick={handleClick}
+                    />    
+                </button>
+                : null
+            }
         </div>
     )
 }
