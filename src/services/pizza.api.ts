@@ -10,7 +10,8 @@ export const pizzaApi = createApi({
     }),
     getAllPizzas: builder.query<IPizza[], IBaseQuery>({
       query: (arg) => {
-        const {sorting = 'rating', filter = 'all', query, page} = arg
+        const {sorting = 'rating', filter = 'all', query, page} = arg;
+        
         const sortBy = `&sortBy=${sorting}`
         const order = `&order=${sorting === 'title' ? 'asc' : 'desc'}`
         const category = `&category=${filter === 'all' ? '' : filter}`

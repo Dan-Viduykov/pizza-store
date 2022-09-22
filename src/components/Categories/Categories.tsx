@@ -1,15 +1,7 @@
 import { FC, useState } from "react";
 import { useActions } from "@/hooks/useActions";
+import { catogories } from "@/store/filter/filter.constans";
 import styles from "./Categories.module.scss";
-
-const catogories = {
-    all :'Всe',
-    meat :'Мясные',
-    vegan :'Вегитарианские',
-    gril :'Гриль',
-    spicy :'Острые',
-    closed :'Закрытые'
-};
 
 interface CategoriesProps {
     className?: string;
