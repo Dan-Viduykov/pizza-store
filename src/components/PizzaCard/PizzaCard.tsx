@@ -25,7 +25,7 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
                     width={'100%'}
                     height={'100%'}
                     layout="responsive"
-                    priority={false}
+                    priority={true}
                     unoptimized
                 />
             </div>

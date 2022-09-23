@@ -1,7 +1,11 @@
 import React, { FC } from "react"
 import ContentLoader from "react-content-loader"
 
-const Skeleton: FC = () => (
+interface SkeletonProps {
+  id: string;
+}
+
+const Skeleton: FC<SkeletonProps> = ({id}) => (
   <ContentLoader 
     speed={2}
     width={309}
@@ -9,6 +13,7 @@ const Skeleton: FC = () => (
     viewBox="0 0 309 489"
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
+    id={id} 
   >
     <rect x="0" y="293" rx="8" ry="8" width="309" height="25" /> 
     <rect x="0" y="334" rx="8" ry="8" width="309" height="93" /> 
