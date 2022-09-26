@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareUp, faSquareCaretDown } from "@fortawesome/free-regular-svg-icons";
 import styles from "./Sort.module.scss";
@@ -13,6 +13,20 @@ const Sort: FC<SortProps> = ({className}) => {
     const [ active, setActive ] = useState(false);
     const [ sort, setSort ] = useState(sortingCategories.rating);
     const { changeSotring } = useActions();
+    const sortRef = useRef<HTMLDivElement>(null)
+
+    // ! исправить "!" восклицательный знак
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (!event.composedPath().includes(sortRef.current!)) {
+                setActive(false);
+            }
+        }
+
+        document.addEventListener('click', handleClickOutside)
+
+        return () => document.removeEventListener('click', handleClickOutside)
+    }, [])
 
     const handleClickButton = () => {
         setActive(state => !state)
@@ -33,7 +47,7 @@ const Sort: FC<SortProps> = ({className}) => {
     })
 
     return (
-        <div className={`${styles.sort} ${className}`}>
+        <div className={`${styles.sort} ${className}`} ref={sortRef}>
             <FontAwesomeIcon className={styles.sort__icon} icon={active ? faCaretSquareUp : faSquareCaretDown} />
             <span className={styles.sort__text}>Сортировка по:</span>
             <button className={styles.sort__button} onClick={handleClickButton}>{sort}</button>
