@@ -6,11 +6,15 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Modify from "./Modify";
 import styles from "./PizzaCard.module.scss";
 import { useActions } from "@/hooks/useActions";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
 
 interface PizzaCardProps {
     className?: string;
     pizza: IPizza;
 }
+
+const sizeValues = [26, 30, 40]
+const thicknessValues = ['тонкое', 'традиционное' ]
 
 const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
     const { id, imageUrl, title, thickness, sizes, price } = pizza;
@@ -18,9 +22,9 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
     const [ activeSize, setActiveSize ] = useState(0);
     const { addPizza } = useActions()
 
-    const sizeValues = [26, 30, 40]
-    const thicknessValues = ['тонкое', 'традиционное' ]
-
+    const cardItem = useTypedSelector(state => state.basketReducer.items.find(item => item.id === id))
+    const addedCount = cardItem ? cardItem.count : 0;
+    
     const handleClick = () => {
         addPizza({id, imageUrl, title, thickness: thicknessValues[activeThickness], size: activeSize, price})
     }
@@ -60,7 +64,7 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
                 <button className={styles.card__button} onClick={handleClick}>
                     <FontAwesomeIcon icon={faPlus} />
                     Добавить 
-                    <span>2</span>
+                    {addedCount > 0 && <span>{addedCount}</span>}
                 </button>
             </div>
         </div>

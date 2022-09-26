@@ -14,7 +14,8 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({className}) => {
     const router = useRouter();
-    const { items, totalPrice} = useTypedSelector(state => state.basketReducer)
+    const { items, totalPrice } = useTypedSelector(state => state.basketReducer);
+    const totalItems = items.reduce((sum, item) => item.count + sum, 0)
 
     return (
         <header className={`${styles.header} ${className}`}>
@@ -33,7 +34,7 @@ const Header: FC<HeaderProps> = ({className}) => {
             <Search className={styles.search} />
             <button className={styles.button} onClick={() => router.push('/order')}>
                 <span>{totalPrice} ₽</span>
-                <span><FontAwesomeIcon icon={faCartShopping} /> {items.length}</span>
+                <span><FontAwesomeIcon icon={faCartShopping} /> {totalItems}</span>
             </button>
         </header>
     )
