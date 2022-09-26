@@ -1,10 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { basketState } from './basket.types';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { basketState, IBaksetPizza } from './basket.types';
 
 const initialState: basketState = {
   items: [],
   totalPrice: 0,
 }
+
+// todo типизировать все акшены
+
+const mathTotalPrice = (items: IBaksetPizza[]) => items.reduce((sum, item) => sum + (item.price * item.count), 0)
 
 export const basketSlice = createSlice({
   name: 'basket',
@@ -19,13 +23,30 @@ export const basketSlice = createSlice({
         state.items.push({...action.payload, count: 1})
       }
      
-      state.totalPrice = state.items.reduce((sum, item) => sum + (item.price * item.count), 0)
+      state.totalPrice = mathTotalPrice(state.items)
+    },
+    removePizza: (state, action: PayloadAction<number>) => {
+      const findItem = state.items.find(item => item.id === action.payload);
+
+      if (findItem) findItem.count--;
+      state.totalPrice = mathTotalPrice(state.items)
+    },
+    deletePizza: (state, action: PayloadAction<number>) => {
+      state.items = state.items.filter(item => item.id !== action.payload);
+      state.totalPrice = mathTotalPrice(state.items)
+    }, 
+    clearAllPizzas: (state) => {
+      state.items = [];
+      state.totalPrice = 0;
     }
   },
 })
 
 export const {
-  addPizza
+  addPizza,
+  removePizza,
+  deletePizza,
+  clearAllPizzas
 } = basketSlice.actions
 
 export const basketReducer = basketSlice.reducer;

@@ -5,8 +5,6 @@ export interface IBaksetPizza {
     thickness: string;
     price: number;
     imageUrl: string;
-    category: string;
-    rating: number;
     count: number;
 }   
 
