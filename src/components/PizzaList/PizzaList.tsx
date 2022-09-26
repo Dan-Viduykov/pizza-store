@@ -7,11 +7,7 @@ import { useTypedSelector } from "@/hooks/useTypedSelector";
 import styles from "./PizzaList.module.scss";
 
 const PizzaList: FC = () => {
-    const router = useRouter();
     const uniqid = require('uniqid')
-
-    const { filter: filterPizzas } = router.query;
-    console.log(filterPizzas);
 
     const { filter, sorting } = useTypedSelector(state => state.filterReducer)
     const { query } = useTypedSelector(state => state.searchReducer);

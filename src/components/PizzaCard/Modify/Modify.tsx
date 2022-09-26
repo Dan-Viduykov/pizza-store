@@ -1,15 +1,15 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import styles from "./Modify.module.scss";
 
 interface ModifyProps {
     className?: string;
     modifys: string[] | number[];
     permittedModifys: string[] | number[];
+    active: number;
+    setActive: (idx: number) => void;
 }
 
-const Modify: FC<ModifyProps> = ({className, permittedModifys, modifys}) => {
-    const [ active, setActive ] = useState(0);
-
+const Modify: FC<ModifyProps> = ({className, permittedModifys, modifys, active, setActive}) => {
     const handleClick = (idx: number) => {
         setActive(idx);
     }

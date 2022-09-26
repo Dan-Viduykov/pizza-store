@@ -6,13 +6,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from '@/assets/logo.png'
 import styles from "./Header.module.scss";
 import Search from "../Search";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
 
 interface HeaderProps {
     className?: string;
 }
 
 const Header: FC<HeaderProps> = ({className}) => {
-    const router = useRouter()
+    const router = useRouter();
+    const { items, totalPrice} = useTypedSelector(state => state.basketReducer)
 
     return (
         <header className={`${styles.header} ${className}`}>
@@ -30,8 +32,8 @@ const Header: FC<HeaderProps> = ({className}) => {
             </div>
             <Search className={styles.search} />
             <button className={styles.button} onClick={() => router.push('/order')}>
-                <span>520 ₽</span>
-                <span><FontAwesomeIcon icon={faCartShopping} /> 3</span>
+                <span>{totalPrice} ₽</span>
+                <span><FontAwesomeIcon icon={faCartShopping} /> {items.length}</span>
             </button>
         </header>
     )

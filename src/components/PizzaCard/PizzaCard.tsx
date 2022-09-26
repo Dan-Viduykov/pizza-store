@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import Image from "next/image";
-import Modify from "./Modify";
 import { IPizza } from "@/services/pizza.types";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import Modify from "./Modify";
 import styles from "./PizzaCard.module.scss";
+import { useActions } from "@/hooks/useActions";
 
 interface PizzaCardProps {
     className?: string;
@@ -14,9 +14,19 @@ interface PizzaCardProps {
 
 const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
     const { id, imageUrl, title, thickness, sizes, price } = pizza;
+    const [ activeThickness, setActiveThickness ] = useState(0);
+    const [ activeSize, setActiveSize ] = useState(0);
+    const { addPizza } = useActions()
+
+    const sizeValues = [26, 30, 40]
+    const thicknessValues = ['тонкое', 'традиционное' ]
+
+    const handleClick = () => {
+        addPizza({id, imageUrl, title, thickness: thicknessValues[activeThickness], size: activeSize, price})
+    }
 
     return (
-        <div className={styles.card}>
+        <div className={`${styles.card} ${className}`}>
             <div className={styles.card__img}>
                 <Image
                     loader={() => imageUrl}
@@ -31,12 +41,23 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
             </div>
             <h4 className={styles.card__title}>{title}</h4>
             <div className={styles.card__modify}>
-                <Modify className={styles.card__thickness} modifys={['тонкое', 'традиционное' ]} permittedModifys={thickness} />
-                <Modify modifys={[26, 30, 40]} permittedModifys={sizes} />
+                <Modify
+                    className={styles.card__thickness}
+                    modifys={thicknessValues}
+                    permittedModifys={thickness}
+                    active={activeThickness}
+                    setActive={setActiveThickness}
+                />
+                <Modify
+                    modifys={sizeValues}
+                    permittedModifys={sizes}
+                    active={activeSize}
+                    setActive={setActiveSize}
+                />
             </div>
             <div className={styles.card__bottom}>
                 <span className={styles.card__price}>от {price} ₽</span>
-                <button className={styles.card__button}>
+                <button className={styles.card__button} onClick={handleClick}>
                     <FontAwesomeIcon icon={faPlus} />
                     Добавить 
                     <span>2</span>
