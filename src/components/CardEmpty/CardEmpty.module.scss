@@ -1,0 +1,45 @@
+@import "@/styles/main.scss";
+@import "@/styles/buttons";
+
+.wrap {
+    max-width: 550px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.title {
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    letter-spacing: 0.01em;
+}
+
+.description {
+    margin-bottom: 45px;
+    font-size: 18px;
+    line-height: 145.4%;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #777777;
+}
+
+.image {
+    display: block;
+}
+
+.button {
+    @extend .btn;
+    margin-top: 75px;
+    border-color: $black;
+    background: $black;
+    color: $white;
+
+    &:hover {
+        background: transparent;
+        color: $black;
+    }
+}

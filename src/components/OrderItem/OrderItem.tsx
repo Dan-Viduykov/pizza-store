@@ -34,7 +34,7 @@ const OrderItem: FC<OrderItemProps> = ({className, product}) => {
                             loader={() => imageUrl}
                             width={`100%`}
                             height={`100%`}
-                            priority={true}
+                            priority={false}
                             alt={title}
                         />
                     </div>
