@@ -1,5 +1,5 @@
 export interface IBaksetPizza {
-    id: number;
+    id: string;
     title: string;
     size: number;
     thickness: string;

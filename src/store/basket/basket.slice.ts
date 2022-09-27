@@ -26,13 +26,13 @@ export const basketSlice = createSlice({
      
       state.totalPrice = mathTotalPrice(state.items)
     },
-    removePizza: (state, action: PayloadAction<number>) => {
+    removePizza: (state, action: PayloadAction<string>) => {
       const findItem = state.items.find(item => item.id === action.payload);
 
       if (findItem) findItem.count--;
       state.totalPrice = mathTotalPrice(state.items)
     },
-    deletePizza: (state, action: PayloadAction<number>) => {
+    deletePizza: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter(item => item.id !== action.payload);
       state.totalPrice = mathTotalPrice(state.items)
     }, 

@@ -3,7 +3,7 @@ import { IBaseQuery, IPizza } from './pizza.types'
 
 export const pizzaApi = createApi({
   reducerPath: 'pizza/api',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://6316e783cb0d40bc41465bdf.mockapi.io/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://633310df573c03ab0b576492.mockapi.io/' }),
   endpoints: (builder) => ({
     getOnePizza: builder.query<IPizza, number>({
       query: (id) => `items/${id}`

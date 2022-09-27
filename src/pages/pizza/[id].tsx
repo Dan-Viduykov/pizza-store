@@ -1,12 +1,12 @@
 import type { GetServerSideProps, NextPage } from 'next'
-import { default as OrderScreen } from '@/components/screens/Order'
 import Layout from '@/components/Layout'
+import Pizza from '@/components/screens/Pizza'
 import { wrapper } from '@/store/store'
 
-const Order: NextPage = () => {
+const Index: NextPage = () => {
   return (
     <Layout>
-      <OrderScreen />
+      <Pizza />
     </Layout>
   )
 }
@@ -15,4 +15,4 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
   return { props: {} }
 })
 
-export default Order
+export default Index

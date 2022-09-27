@@ -17,7 +17,7 @@ const sizeValues = [26, 30, 40]
 const thicknessValues = ['тонкое', 'традиционное' ]
 
 const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
-    const { id, imageUrl, title, thickness, sizes, price } = pizza;
+    const { id, imageUrl, title, price } = pizza;
     const [ activeThickness, setActiveThickness ] = useState(0);
     const [ activeSize, setActiveSize ] = useState(0);
     const { addPizza } = useActions();
@@ -48,13 +48,11 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
                 <Modify
                     className={styles.card__thickness}
                     modifys={thicknessValues}
-                    permittedModifys={thickness}
                     active={activeThickness}
                     setActive={setActiveThickness}
                 />
                 <Modify
                     modifys={sizeValues}
-                    permittedModifys={sizes}
                     active={activeSize}
                     setActive={setActiveSize}
                 />

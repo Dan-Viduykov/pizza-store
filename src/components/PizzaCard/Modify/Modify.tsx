@@ -4,12 +4,11 @@ import styles from "./Modify.module.scss";
 interface ModifyProps {
     className?: string;
     modifys: string[] | number[];
-    permittedModifys: string[] | number[];
     active: number;
     setActive: (idx: number) => void;
 }
 
-const Modify: FC<ModifyProps> = ({className, permittedModifys, modifys, active, setActive}) => {
+const Modify: FC<ModifyProps> = ({className, modifys, active, setActive}) => {
     const handleClick = (idx: number) => {
         setActive(idx);
     }
@@ -22,7 +21,6 @@ const Modify: FC<ModifyProps> = ({className, permittedModifys, modifys, active, 
                 className={`
                     ${styles.modifys__item}
                     ${active === index ? styles.modifys__item_active : null}
-                    ${permittedModifys[index] !== item ? styles.modifys__item_disabled : null}
                 `}
             >
                 {item}
