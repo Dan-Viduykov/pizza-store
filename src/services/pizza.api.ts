@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IBaseQuery, IPizza } from './pizza.types'
+import { IBaseQuery, IPizza } from './pizza.types';
 
 export const pizzaApi = createApi({
   reducerPath: 'pizza/api',
@@ -10,13 +10,13 @@ export const pizzaApi = createApi({
     }),
     getAllPizzas: builder.query<IPizza[], IBaseQuery>({
       query: (arg) => {
-        const {sorting = 'rating', filter = 'all', query, page} = arg;
+        const {sorting = 'rating', filter = 'all', query, page = 1, limit = 500} = arg;
         
-        const sortBy = `&sortBy=${sorting}`
+        const sortBy = sorting ? `&sortBy=${sorting}` : '';
         const order = `&order=${sorting === 'title' ? 'asc' : 'desc'}`
-        const category = `&category=${filter === 'all' ? '' : filter}`
-        const search = `&search=${query}`
-        const pages = `&page=${page}&limit=${4}`
+        const category = filter ? `&category=${filter === 'all' ? '' : filter}` : '';
+        const search = query ? `&search=${query}` : '';
+        const pages = `&page=${page}&limit=${limit}`
         
         return {
           url: `items?${sortBy}${order}${query ? '' : category}${!query ? '' : search}${pages}`

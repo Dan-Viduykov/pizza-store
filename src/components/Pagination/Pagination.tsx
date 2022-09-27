@@ -4,9 +4,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactPaginate from "react-paginate";
 import styles from "./Pagination.module.scss";
 import { useActions } from "@/hooks/useActions";
+import { useGetAllPizzasQuery } from "@/services/pizza.api";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
 
 const Pagination: FC = () => {
+    const { limit } = useTypedSelector(state => state.paginationReducer)
+    const { data } = useGetAllPizzasQuery({})
     const { setPage } = useActions()
+
+    let pageCount = 1;
+
+    if (data) {
+        pageCount = data.length / limit
+    }
 
     const handleClick = (event: any) => {
         setPage(event.selected + 1);
@@ -19,8 +29,8 @@ const Pagination: FC = () => {
             nextLabel={<FontAwesomeIcon icon={faAngleRight} />}
             previousLabel={<FontAwesomeIcon icon={faAngleLeft} />}
             onPageChange={handleClick}
-            pageRangeDisplayed={4}
-            pageCount={4}
+            pageRangeDisplayed={limit}
+            pageCount={pageCount}
         />
     )
 }

@@ -12,4 +12,5 @@ export interface IBaseQuery {
     filter?: string;
     query?: string;
     page?: number;
+    limit?: number;
 }
