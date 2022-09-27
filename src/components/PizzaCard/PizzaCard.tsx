@@ -19,14 +19,14 @@ const thicknessValues = ['тонкое', 'традиционное' ]
 const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
     const { id, imageUrl, title, thickness, sizes, price } = pizza;
     const [ activeThickness, setActiveThickness ] = useState(0);
-    const [ activeSize, setActiveSize ] = useState(sizeValues[0]);
+    const [ activeSize, setActiveSize ] = useState(0);
     const { addPizza } = useActions();
 
     const cardItem = useTypedSelector(state => state.basketReducer.items.find(item => item.id === id))
     const addedCount = cardItem ? cardItem.count : 0;
     
     const handleClick = () => {
-        addPizza({id, imageUrl, title, thickness: thicknessValues[activeThickness], size: activeSize, price})
+        addPizza({id, imageUrl, title, thickness: thicknessValues[activeThickness], size: sizeValues[activeSize], price})
     }
 
     return (

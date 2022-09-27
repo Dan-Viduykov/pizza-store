@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { useRouter } from "next/router";
 import PizzaCard from "@/components/PizzaCard";
 import Skeleton from "@/components/PizzaCard/Skeleton";
 import { useGetAllPizzasQuery } from "@/services/pizza.api";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import styles from "./PizzaList.module.scss";
+import PizzasError from "../PizzasError";
 
 const PizzaList: FC = () => {
     const uniqid = require('uniqid')
@@ -19,6 +19,10 @@ const PizzaList: FC = () => {
     const pizzasElements = pizzas?.map(item => <PizzaCard key={item.id} className={styles.list__item} pizza={item} />)
 
     const content = isLoading || isFetching ? skeletons : pizzasElements 
+
+    if (isError) {
+        return <PizzasError />
+    }
 
     return (
         <ul className={styles.list}>
