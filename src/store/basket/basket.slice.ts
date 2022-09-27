@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { basketState, IBaksetPizza } from './basket.types';
+import { RootState } from '../store';
 
 const initialState: basketState = {
   items: [],
@@ -41,6 +42,8 @@ export const basketSlice = createSlice({
     }
   },
 })
+
+export const selectBasket = (state: RootState) => state.basketReducer
 
 export const {
   addPizza,

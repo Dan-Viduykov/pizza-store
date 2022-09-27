@@ -1,6 +1,7 @@
 import { FC } from "react";
 import styles from "./OrderList.module.scss";
 import OrderItem from "../OrderItem";
+import { selectBasket } from "@/store/basket/basket.slice";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 
 interface OrderListProps {
@@ -8,7 +9,7 @@ interface OrderListProps {
 }
 
 const OrderList: FC<OrderListProps> = ({className}) => {
-    const { items } = useTypedSelector(state => state.basketReducer);
+    const { items } = useTypedSelector(selectBasket);
 
     const productItems = items.map(item => {
         const uniqid = require('uniqid');

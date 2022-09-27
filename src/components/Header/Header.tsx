@@ -7,6 +7,7 @@ import logo from '@/assets/logo.png'
 import styles from "./Header.module.scss";
 import Search from "../Search";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
+import { selectBasket } from "@/store/basket/basket.slice";
 
 interface HeaderProps {
     className?: string;
@@ -14,7 +15,7 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({className}) => {
     const router = useRouter();
-    const { items, totalPrice } = useTypedSelector(state => state.basketReducer);
+    const { items, totalPrice } = useTypedSelector(selectBasket);
     const totalItems = items.reduce((sum, item) => item.count + sum, 0)
 
     return (
