@@ -1,11 +1,11 @@
 import { FC } from "react";
+import { useGetAllPizzasQuery } from "@/services/pizza.api";
+import ReactPaginate from "react-paginate";
+import { useActions } from "@/hooks/useActions";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ReactPaginate from "react-paginate";
 import styles from "./Pagination.module.scss";
-import { useActions } from "@/hooks/useActions";
-import { useGetAllPizzasQuery } from "@/services/pizza.api";
-import { useTypedSelector } from "@/hooks/useTypedSelector";
 
 const Pagination: FC = () => {
     const { limit } = useTypedSelector(state => state.paginationReducer)
@@ -18,17 +18,13 @@ const Pagination: FC = () => {
         pageCount = data.length / limit
     }
 
-    const handleClick = (event: any) => {
-        setPage(event.selected + 1);
-    }
-
     return (
         <ReactPaginate
             className={styles.pagination}
             breakLabel="..."
             nextLabel={<FontAwesomeIcon icon={faAngleRight} />}
             previousLabel={<FontAwesomeIcon icon={faAngleLeft} />}
-            onPageChange={handleClick}
+            onPageChange={(event) => setPage(event.selected + 1)}
             pageRangeDisplayed={limit}
             pageCount={pageCount}
         />
