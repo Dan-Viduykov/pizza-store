@@ -20,14 +20,14 @@ const Header: FC<HeaderProps> = ({className}) => {
 
     return (
         <header className={`${styles.header} ${className}`}>
-            <div className={styles.logo}>
+            <button onClick={() => router.push('/')} className={styles.logo}>
                 <Image
                     src={logo}
                     layout={'responsive'}
                     priority={false}
                     alt={'logo'}
                 />
-            </div>
+            </button>
             <div className={styles.info}>
                 <h1 className={styles.title}>REACT PIZZA</h1>
                 <p className={styles.description}>самая вкусная пицца во вселенной</p>
