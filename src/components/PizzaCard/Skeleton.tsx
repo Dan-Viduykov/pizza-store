@@ -2,18 +2,18 @@ import React, { FC } from "react"
 import ContentLoader from "react-content-loader"
 
 interface SkeletonProps {
-  id: string;
+  className?: string;
 }
 
-const Skeleton: FC<SkeletonProps> = ({id}) => (
-  <ContentLoader 
+const Skeleton: FC<SkeletonProps> = ({className}) => (
+  <ContentLoader
+    className={className}
     speed={2}
     width={309}
     height={489}
     viewBox="0 0 309 489"
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
-    id={id} 
   >
     <rect x="0" y="293" rx="8" ry="8" width="309" height="25" /> 
     <rect x="0" y="334" rx="8" ry="8" width="309" height="93" /> 

@@ -9,19 +9,12 @@ interface ModifyProps {
 }
 
 const Modify: FC<ModifyProps> = ({className, modifys, active, setActive}) => {
-    const handleClick = (idx: number) => {
-        setActive(idx);
-    }
-    
     const items = modifys.map((item, index) => {
         return (
             <li
                 key={index}
-                onClick={() => handleClick(index)}
-                className={`
-                    ${styles.modifys__item}
-                    ${active === index ? styles.modifys__item_active : null}
-                `}
+                onClick={() => setActive(index)}
+                className={`${styles.item} ${active === index ? styles.item_active : null}`}
             >
                 {item}
             </li>

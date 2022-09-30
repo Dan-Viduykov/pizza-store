@@ -1,12 +1,12 @@
 import { FC, useState } from "react";
 import Image from "next/image";
 import { IPizza } from "@/services/pizza.types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import Modify from "./Modify";
-import styles from "./PizzaCard.module.scss";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
+import Modify from "./Modify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import styles from "./PizzaCard.module.scss";
 
 interface PizzaCardProps {
     className?: string;
@@ -22,16 +22,30 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
     const [ activeSize, setActiveSize ] = useState(0);
     const { addPizza } = useActions();
 
+    // todo добавить picture для всех картинок
+
     const cardItem = useTypedSelector(state => state.basketReducer.items.find(item => item.id === id))
     const addedCount = cardItem ? cardItem.count : 0;
     
+    // todo сделать функцию создания пиццы в корзину
+
     const handleClick = () => {
-        addPizza({id, imageUrl, title, thickness: thicknessValues[activeThickness], size: sizeValues[activeSize], price})
+        addPizza({
+            id,
+            imageUrl,
+            title,
+            thickness: thicknessValues[activeThickness],
+            size: sizeValues[activeSize],
+            price
+        })
     }
+
+    // todo почитать или посмотреть про Image next и исправить все предупреждения с ними
 
     return (
         <div className={`${styles.card} ${className}`}>
-            <div className={styles.card__img}>
+            <div className={styles.img}>
+
                 <Image
                     loader={() => imageUrl}
                     src={imageUrl}
@@ -43,23 +57,24 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
                     unoptimized
                 />
             </div>
-            <h4 className={styles.card__title}>{title}</h4>
-            <div className={styles.card__modify}>
+            <h4 className={styles.title}>{title}</h4>
+            <div className={styles.modifys}>
                 <Modify
-                    className={styles.card__thickness}
+                    className={styles.modify}
                     modifys={thicknessValues}
                     active={activeThickness}
                     setActive={setActiveThickness}
                 />
                 <Modify
+                    className={styles.modify}
                     modifys={sizeValues}
                     active={activeSize}
                     setActive={setActiveSize}
                 />
             </div>
-            <div className={styles.card__bottom}>
-                <span className={styles.card__price}>от {price} ₽</span>
-                <button className={styles.card__button} onClick={handleClick}>
+            <div className={styles.bottomBar}>
+                <span className={styles.price}>от {price} ₽</span>
+                <button className={styles.button} onClick={handleClick}>
                     <FontAwesomeIcon icon={faPlus} />
                     Добавить 
                     {addedCount > 0 && <span>{addedCount}</span>}
