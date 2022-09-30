@@ -1,22 +1,22 @@
 import { FC } from "react";
+import { useGetAllPizzasQuery } from "@/services/pizza.api";
 import PizzaCard from "@/components/PizzaCard";
 import Skeleton from "@/components/PizzaCard/Skeleton";
-import { useGetAllPizzasQuery } from "@/services/pizza.api";
+import PizzasError from "@/components/PizzasError";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import styles from "./PizzaList.module.scss";
-import PizzasError from "../PizzasError";
 
 const PizzaList: FC = () => {
-    const uniqid = require('uniqid')
-
-    const { filter, sorting } = useTypedSelector(state => state.filterReducer)
-    const { query } = useTypedSelector(state => state.searchReducer);
-    const { page, limit } = useTypedSelector(state => state.paginationReducer);
+    const {
+        filterReducer: { filter, sorting },
+        searchReducer: { query },
+        paginationReducer: { page, limit }
+    } = useTypedSelector(state => state)
     
     const { isLoading, isError, isFetching, data: pizzas } = useGetAllPizzasQuery({sorting, filter, query, page, limit})
     
-    const skeletons = [...new Array(4)].map((item, idx) => <Skeleton key={idx} id={uniqid()} />)
-    const pizzasElements = pizzas?.map(item => <PizzaCard key={item.id} className={styles.list__item} pizza={item} />)
+    const skeletons = [...new Array(limit)].map((item, idx) => <Skeleton key={idx} />)
+    const pizzasElements = pizzas?.map(item => <PizzaCard key={item.id} pizza={item} />)
 
     const content = isLoading || isFetching ? skeletons : pizzasElements 
 
