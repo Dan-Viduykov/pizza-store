@@ -23,35 +23,34 @@ const OrderItem: FC<OrderItemProps> = ({className, product}) => {
     const addItem = () => addPizza({id})
     const deleteItem = () => deletePizza(id)
 
+    if (count <= 0) {
+        return <></>
+    }
+
     return (
-        <>
-            {
-                count > 0 &&
-                <div className={`${styles.card} ${className}`}>
-                    <div className={styles.img}>
-                        <Image
-                            src={imageUrl}
-                            loader={() => imageUrl}
-                            width={`100%`}
-                            height={`100%`}
-                            priority={false}
-                            alt={title}
-                        />
-                    </div>
-                    <div className={styles.info}>
-                        <h4 className={styles.title}>{title}</h4>
-                        <span className={styles.options}>{thickness}, {size} cм.</span>
-                    </div>
-                    <div className={styles.counter}>
-                        <button className={styles.button_count} onClick={removeItem}><FontAwesomeIcon icon={faMinus}/></button>
-                        <span>{count}</span>
-                        <button className={styles.button_count} onClick={addItem}><FontAwesomeIcon icon={faPlus}/></button>
-                    </div>
-                    <span className={styles.price}>{count * price} ₽</span>
-                    <button className={styles.button_del} onClick={deleteItem}><FontAwesomeIcon icon={faXmark} /></button>
-                </div>
-            }
-        </>
+        <div className={`${styles.card} ${className}`}>
+            <div className={styles.img}>
+                <Image
+                    src={imageUrl}
+                    loader={() => imageUrl}
+                    width={`100%`}
+                    height={`100%`}
+                    priority={false}
+                    alt={title}
+                />
+            </div>
+            <div className={styles.info}>
+                <h4 className={styles.title}>{title}</h4>
+                <span className={styles.options}>{thickness}, {size} cм.</span>
+            </div>
+            <div className={styles.counter}>
+                <button className={styles.button_count} onClick={removeItem}><FontAwesomeIcon icon={faMinus}/></button>
+                <span>{count}</span>
+                <button className={styles.button_count} onClick={addItem}><FontAwesomeIcon icon={faPlus}/></button>
+            </div>
+            <span className={styles.price}>{count * price} ₽</span>
+            <button className={styles.button_del} onClick={deleteItem}><FontAwesomeIcon icon={faXmark} /></button>
+        </div>
     )
 }
 
