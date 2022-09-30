@@ -15,10 +15,10 @@ const Sort: FC<SortProps> = ({className}) => {
     const { changeSotring } = useActions();
     const sortRef = useRef<HTMLDivElement>(null)
 
-    // ! исправить "!" восклицательный знак
+    // todo типизировать все onClick
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (!event.composedPath().includes(sortRef.current!)) {
+            if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
                 setActive(false);
             }
         }
