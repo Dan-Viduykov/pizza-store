@@ -59,6 +59,17 @@
 .button_count {
     @extend .btn_circle;
     font-weight: 900;
+
+    &:disabled {
+        opacity: 0.4;
+        border-color: $gray;
+        color: $gray;
+
+        &:hover {
+            background: transparent
+
+        }
+    }
 }
 
 .button_del {

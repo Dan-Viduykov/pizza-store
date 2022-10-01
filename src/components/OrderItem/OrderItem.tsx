@@ -15,11 +15,7 @@ const OrderItem: FC<OrderItemProps> = ({className, product}) => {
     const { id, imageUrl, title, thickness, size, price, count } = product;
     const { removePizza, addPizza, deletePizza } = useActions();
 
-    const removeItem = () => {
-        if (count > 1) {
-            removePizza(id)
-        }
-    }
+    const removeItem = () => removePizza(id)
     const addItem = () => addPizza({id})
     const deleteItem = () => deletePizza(id)
 
@@ -44,7 +40,7 @@ const OrderItem: FC<OrderItemProps> = ({className, product}) => {
                 <span className={styles.options}>{thickness}, {size} cм.</span>
             </div>
             <div className={styles.counter}>
-                <button className={styles.button_count} onClick={removeItem}><FontAwesomeIcon icon={faMinus}/></button>
+                <button className={styles.button_count} disabled={count <= 1} onClick={removeItem}><FontAwesomeIcon icon={faMinus}/></button>
                 <span>{count}</span>
                 <button className={styles.button_count} onClick={addItem}><FontAwesomeIcon icon={faPlus}/></button>
             </div>

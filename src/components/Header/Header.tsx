@@ -16,7 +16,9 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({className}) => {
     const router = useRouter();
     const { items, totalPrice } = useTypedSelector(selectBasket);
-    const totalItems = items.reduce((sum, item) => item.count + sum, 0)
+    const totalItems = items.reduce((sum, item) => item.count + sum, 0);
+
+    const search = router.pathname === '/' ? <Search className={styles.search} /> : null;
 
     return (
         <header className={`${styles.header} ${className}`}>
@@ -32,7 +34,7 @@ const Header: FC<HeaderProps> = ({className}) => {
                 <h1 className={styles.title}>REACT PIZZA</h1>
                 <p className={styles.description}>самая вкусная пицца во вселенной</p>
             </div>
-            <Search className={styles.search} />
+            {search}
             <button className={styles.button} onClick={() => router.push('/order')}>
                 <span>{totalPrice} ₽</span>
                 <span><FontAwesomeIcon icon={faCartShopping} /> {totalItems}</span>

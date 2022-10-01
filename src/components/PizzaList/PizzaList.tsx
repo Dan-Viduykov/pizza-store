@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { useGetAllPizzasQuery } from "@/services/pizza.api";
 import PizzaCard from "@/components/PizzaCard";
 import Skeleton from "@/components/PizzaCard/Skeleton";
