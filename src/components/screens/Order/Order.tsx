@@ -19,6 +19,8 @@ const Order: FC = () => {
         return <CardEmpty />
     }
 
+    // todo узнать как и зачем примерняется callback и memo, и удалить все ненужные перерисовки
+
     return ( 
         <div className={styles.wrap}>
             <div className={styles.top}>

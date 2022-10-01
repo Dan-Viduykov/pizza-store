@@ -4,7 +4,7 @@ import { RootState } from '../store';
 
 const initialState: basketState = {
   items: [],
-  totalPrice: 0,
+  totalPrice: 0
 }
 
 // todo типизировать все акшены
