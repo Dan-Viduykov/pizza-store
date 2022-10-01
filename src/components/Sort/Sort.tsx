@@ -31,7 +31,6 @@ const Sort: FC<SortProps> = ({className}) => {
     const handleClickButton = () => {
         setActive(state => !state)
     }
-
     const handleClickItem = (idx: number, sortingTitle: string) => {
         setSort(sortingTitle);
         setActive(false);
