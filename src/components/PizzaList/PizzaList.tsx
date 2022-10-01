@@ -10,12 +10,18 @@ const PizzaList: FC = () => {
     const {
         filterReducer: { filter, sorting },
         searchReducer: { query },
-        paginationReducer: { page, limit }
+        paginationReducer: { currentPage, itemsLimit }
     } = useTypedSelector(state => state)
     
-    const { isLoading, isError, isFetching, data: pizzas } = useGetAllPizzasQuery({sorting, filter, query, page, limit})
+    const { isLoading, isError, isFetching, data: pizzas } = useGetAllPizzasQuery({
+        sorting,
+        filter,
+        query,
+        page: currentPage,
+        limit: itemsLimit
+    })
     
-    const skeletons = [...new Array(limit)].map((item, idx) => <Skeleton key={idx} />)
+    const skeletons = [...new Array(itemsLimit)].map((item, idx) => <Skeleton key={idx} />)
     const pizzasElements = pizzas?.map(item => <PizzaCard key={item.id} pizza={item} />)
 
     const content = isLoading || isFetching ? skeletons : pizzasElements 

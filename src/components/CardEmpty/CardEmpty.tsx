@@ -1,6 +1,6 @@
 import { FC } from "react";
-import Image from "next/image";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import voidBasket from "@/assets/voidBasket.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrownOpen } from "@fortawesome/free-regular-svg-icons";

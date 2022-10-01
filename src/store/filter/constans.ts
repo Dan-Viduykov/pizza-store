@@ -4,7 +4,6 @@ export const catogories = {
   vegan :'Вегитарианские',
   gril :'Гриль',
   spicy :'Острые',
-  closed :'Закрытые'
 };
   
 export const sortingCategories = {

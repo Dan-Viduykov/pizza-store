@@ -2,7 +2,7 @@ import { FC } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
-import { selectBasket } from "@/store/basket/basket.slice";
+import { selectBasket } from "@/store/basket/selectors";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Search from "../Search";

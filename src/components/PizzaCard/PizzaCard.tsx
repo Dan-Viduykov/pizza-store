@@ -20,7 +20,7 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
     const { id, imageUrl, title, price } = pizza;
     const [ activeThickness, setActiveThickness ] = useState(0);
     const [ activeSize, setActiveSize ] = useState(0);
-    const { addPizza } = useActions();
+    const { createPizza } = useActions();
 
     // todo добавить picture для всех картинок
 
@@ -30,13 +30,14 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
     // todo сделать функцию создания пиццы в корзину
 
     const handleClick = () => {
-        addPizza({
+        createPizza({
             id,
             imageUrl,
             title,
             thickness: thicknessValues[activeThickness],
             size: sizeValues[activeSize],
-            price
+            price,
+            count: 1
         })
     }
 
@@ -45,7 +46,6 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
     return (
         <div className={`${styles.card} ${className}`}>
             <div className={styles.img}>
-
                 <Image
                     loader={() => imageUrl}
                     src={imageUrl}

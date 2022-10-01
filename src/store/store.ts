@@ -2,10 +2,10 @@ import { createWrapper } from 'next-redux-wrapper';
 import { configureStore } from '@reduxjs/toolkit'
 import { pizzaApi } from '@/services/pizza.api'
 
-import { filterReducer } from './filter/filter.slice';
-import { searchReducer } from './search/search.slice';
-import { paginationReducer } from './pagination/pagination.slice';
-import { basketReducer } from './basket/basket.slice';
+import { basketReducer } from './basket/slice';
+import { paginationReducer } from './pagination/slice';
+import { searchReducer } from './search/slice';
+import { filterReducer } from './filter/slice';
 
 export function makeStore() {
     return configureStore({
@@ -25,6 +25,5 @@ export const store = makeStore()
 export type AppStore = ReturnType<typeof makeStore>;
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<AppStore['getState']>;
-// export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
 
 export const wrapper = createWrapper<AppStore>(makeStore)

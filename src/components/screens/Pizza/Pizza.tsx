@@ -5,7 +5,7 @@ import styles from "./Pizza.module.scss";
 
 const Pizza: FC = () => {
     const {push, query: {id}} = useRouter();
-    const { isLoading, isError, isFetching, data: pizzaData } = useGetOnePizzaQuery(Number(id))
+    const { isLoading, isError, isFetching, data: pizzaData } = useGetOnePizzaQuery(String(id))
 
     return (
         <div className={styles.wrap}>

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
-import { IBaksetPizza } from "@/store/basket/basket.types";
+import { IBaksetPizza } from "@/store/basket/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useActions } from "@/hooks/useActions";
@@ -13,10 +13,10 @@ interface OrderItemProps {
 
 const OrderItem: FC<OrderItemProps> = ({className, product}) => {
     const { id, imageUrl, title, thickness, size, price, count } = product;
-    const { removePizza, addPizza, deletePizza } = useActions();
+    const { subtractPizza, addPizza, deletePizza } = useActions();
 
-    const removeItem = () => removePizza(id)
-    const addItem = () => addPizza({id})
+    const removeItem = () => subtractPizza(id)
+    const addItem = () => addPizza(id)
     const deleteItem = () => deletePizza(id)
 
     if (count <= 0) {

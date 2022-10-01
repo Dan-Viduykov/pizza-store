@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useRouter } from "next/router";
-import { selectBasket } from "@/store/basket/basket.slice";
+import { selectBasket } from "@/store/basket/selectors";
 import OrderList from "@/components/OrderList";
 import CardEmpty from "@/components/CardEmpty";
 import { useActions } from "@/hooks/useActions";
@@ -12,7 +12,7 @@ import styles from "./Order.module.scss";
 const Order: FC = () => {
     const router = useRouter();
     const { items, totalPrice } = useTypedSelector(selectBasket)
-    const { clearAllPizzas } = useActions();
+    const { deleteAllPizzas } = useActions();
     const totalItems = items.reduce((sum, item) => sum + item.count, 0)
 
     if (!items.length) { 
@@ -26,7 +26,7 @@ const Order: FC = () => {
             <div className={styles.top}>
                 <FontAwesomeIcon icon={faCartShopping} />
                 <h3 className={styles.title}>Корзина</h3>
-                <button className={styles.button_clear} onClick={() => clearAllPizzas()}>
+                <button className={styles.button_clear} onClick={() => deleteAllPizzas()}>
                     <FontAwesomeIcon icon={faTrashAlt} />
                     <span>Очистить корзину</span>
                 </button>

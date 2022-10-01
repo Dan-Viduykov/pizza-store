@@ -10,7 +10,7 @@ interface SearchProps {
 }
 
 const Search: FC<SearchProps> = ({className}) => {
-    const { changeQuery } = useActions();
+    const { setQuery } = useActions();
     const [ value, setValue ] = useState('')
     const { debouncedValue, setDebouncedValue } = useDebounce(value.trim(), 300);
     
@@ -18,7 +18,7 @@ const Search: FC<SearchProps> = ({className}) => {
         setValue(e.target.value)
     }
     
-    changeQuery(debouncedValue)
+    setQuery(debouncedValue)
 
     return (
         <div className={`${styles.wrap} ${className}`}>   

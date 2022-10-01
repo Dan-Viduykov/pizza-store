@@ -1,7 +1,8 @@
 import { FC, useState } from "react";
 import { useActions } from "@/hooks/useActions";
-import { catogories } from "@/store/filter/filter.constans";
+import { catogories } from "@/store/filter/constans";
 import styles from "./Categories.module.scss";
+import { TFilter } from "@/store/filter/types";
 
 interface CategoriesProps {
     className?: string;
@@ -13,7 +14,7 @@ const Categories: FC<CategoriesProps> = ({className}) => {
     
     const handleClick = (idx: number) => {
         setActiveIdx(idx);
-        changeFilter(Object.keys(catogories)[idx])
+        changeFilter(Object.keys(catogories)[idx] as TFilter)
     }
     
     const items = Object.values(catogories).map((item, idx) => {

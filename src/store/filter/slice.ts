@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { filterState } from './filter.types';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { filterState, TFilter, TSort } from './types';
 
 const initialState: filterState = {
   sorting: "rating",
@@ -10,10 +10,10 @@ export const filterSlice = createSlice({
   name: 'filter',
   initialState,
   reducers: {
-    changeFilter: (state, action) => {
+    changeFilter: (state, action: PayloadAction<TFilter>) => {
       state.filter = action.payload
     },
-    changeSotring: (state, action) => {
+    changeSotring: (state, action: PayloadAction<TSort>) => {
       state.sorting = action.payload
     }
   },

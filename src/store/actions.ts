@@ -1,15 +1,17 @@
-import { changeFilter, changeSotring } from "./filter/filter.slice"
-import { changeQuery } from "./search/search.slice"
-import { setPage } from "./pagination/pagination.slice"
-import { addPizza, removePizza, deletePizza, clearAllPizzas } from "./basket/basket.slice"
+import { createPizza, subtractPizza, addPizza, deletePizza, deleteAllPizzas }from "./basket/slice"
+import { changeFilter, changeSotring } from "./filter/slice"
+import { setCurrentPage, setItemsLimit } from "./pagination/slice"
+import { setQuery } from "./search/slice"
 
 export {
+    createPizza,
+    subtractPizza,
+    addPizza,
+    deletePizza,
+    deleteAllPizzas,
     changeFilter,
     changeSotring,
-    changeQuery,
-    setPage,
-    addPizza,
-    removePizza, 
-    deletePizza, 
-    clearAllPizzas
+    setCurrentPage,
+    setItemsLimit,
+    setQuery
 }

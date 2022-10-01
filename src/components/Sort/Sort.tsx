@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareUp, faSquareCaretDown } from "@fortawesome/free-regular-svg-icons";
 import styles from "./Sort.module.scss";
 import { useActions } from "@/hooks/useActions";
-import { sortingCategories } from "@/store/filter/filter.constans";
+import { sortingCategories } from "@/store/filter/constans";
+import { TSort } from "@/store/filter/types";
 
 interface SortProps {
     className?: string;
@@ -34,7 +35,7 @@ const Sort: FC<SortProps> = ({className}) => {
     const handleClickItem = (idx: number, sortingTitle: string) => {
         setSort(sortingTitle);
         setActive(false);
-        changeSotring(Object.keys(sortingCategories)[idx]);
+        changeSotring(Object.keys(sortingCategories)[idx] as TSort);
     }
 
     const sortingItems = Object.values(sortingCategories).map((item: string, idx) => {
