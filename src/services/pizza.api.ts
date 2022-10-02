@@ -15,7 +15,7 @@ export const pizzaApi = createApi({
         const sortBy = sorting ? `&sortBy=${sorting}` : '';
         const order = `&order=${sorting === 'title' ? 'asc' : 'desc'}`
         const category = filter ? `&category=${filter === 'all' ? '' : filter}` : '';
-        const search = query ? `&search=${query}` : '';
+        const search = query ? `&title=${query}` : '';
         const pages = `&page=${page}&limit=${limit}`
         
         return {
