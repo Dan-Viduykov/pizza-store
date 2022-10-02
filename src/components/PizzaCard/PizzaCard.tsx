@@ -31,7 +31,7 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
 
     const handleClick = () => {
         createPizza({
-            id,
+            id: `${id}${thicknessValues[activeThickness]}${sizeValues[activeSize]}`,
             imageUrl,
             title,
             thickness: thicknessValues[activeThickness],
