@@ -16,7 +16,7 @@ const OrderItem: FC<OrderItemProps> = ({className, product}) => {
     const { subtractPizza, addPizza, deletePizza } = useActions();
 
     const removeItem = () => subtractPizza(id)
-    const addItem = () => addPizza(id)
+    const addItem = () => addPizza({id} as IBaksetPizza)
     const deleteItem = () => deletePizza(id)
 
     if (count <= 0) {

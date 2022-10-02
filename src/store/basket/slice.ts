@@ -14,22 +14,25 @@ export const basketSlice = createSlice({
   name: 'basket',
   initialState,
   reducers: {
-    createPizza: (state, action: PayloadAction<IBaksetPizza>) => {
-      state.items.push({...action.payload})
-      state.totalPrice = mathTotalPrice(state.items)
+    addPizza(state, action: PayloadAction<IBaksetPizza>) {
+      const findItem = state.items.find((obj) => obj.id === action.payload.id);
+
+      if (findItem) {
+        findItem.count++;
+      } else {
+        state.items.push({
+          ...action.payload,
+          count: 1,
+        });
+      }
+
+      state.totalPrice = mathTotalPrice(state.items);
     },
 
     subtractPizza: (state, action: PayloadAction<string>) => {
       const findItem = state.items.find(item => item.id === action.payload);
 
       if (findItem) findItem.count--;
-      state.totalPrice = mathTotalPrice(state.items)
-    },
-
-    addPizza: (state, action: PayloadAction<string>) => {
-      const findItem = state.items.find(item => item.id === action.payload);
-
-      if (findItem) findItem.count++;
       state.totalPrice = mathTotalPrice(state.items)
     },
 
@@ -46,7 +49,6 @@ export const basketSlice = createSlice({
 })
 
 export const {
-  createPizza,
   subtractPizza,
   addPizza,
   deletePizza,

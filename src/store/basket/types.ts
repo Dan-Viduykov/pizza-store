@@ -5,7 +5,7 @@ export interface IBaksetPizza {
     thickness: string;
     price: number;
     imageUrl: string;
-    count: number;
+    count: number
 }   
 
 export interface basketState {

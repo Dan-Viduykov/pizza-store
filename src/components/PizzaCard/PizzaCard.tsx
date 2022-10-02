@@ -7,6 +7,10 @@ import Modify from "./Modify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import styles from "./PizzaCard.module.scss";
+import { selectCartItemById } from "@/store/basket/selectors";
+// todo почитать или посмотреть про Image next и исправить все предупреждения с ними
+// todo сделать функцию создания пиццы в корзину
+// todo добавить picture для всех картинок
 
 interface PizzaCardProps {
     className?: string;
@@ -20,28 +24,26 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
     const { id, imageUrl, title, price } = pizza;
     const [ activeThickness, setActiveThickness ] = useState(0);
     const [ activeSize, setActiveSize ] = useState(0);
-    const { createPizza } = useActions();
+    const { addPizza } = useActions();
 
-    // todo добавить picture для всех картинок
+    const finalPrice = Math.floor(price + 
+                                (activeThickness === 0 ? 0 : price * 0.1) +
+                                (sizeValues[activeSize] === 26 ? 0 : sizeValues[activeSize] === 30 ?price*0.1 : price*0.3));
 
-    const cardItem = useTypedSelector(state => state.basketReducer.items.find(item => item.id === id))
+    const cardItem = useTypedSelector(selectCartItemById(id));
     const addedCount = cardItem ? cardItem.count : 0;
-    
-    // todo сделать функцию создания пиццы в корзину
 
     const handleClick = () => {
-        createPizza({
-            id: `${id}${thicknessValues[activeThickness]}${sizeValues[activeSize]}`,
-            imageUrl,
+        addPizza({
+            id: `${id}/${thicknessValues[activeThickness]}/${sizeValues[activeSize]}`,
             title,
+            price: finalPrice,
+            imageUrl,
             thickness: thicknessValues[activeThickness],
             size: sizeValues[activeSize],
-            price,
-            count: 1
+            count: 0,
         })
     }
-
-    // todo почитать или посмотреть про Image next и исправить все предупреждения с ними
 
     return (
         <div className={`${styles.card} ${className}`}>
@@ -73,7 +75,7 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
                 />
             </div>
             <div className={styles.bottomBar}>
-                <span className={styles.price}>от {price} ₽</span>
+                <span className={styles.price}>от {finalPrice} ₽</span>
                 <button className={styles.button} onClick={handleClick}>
                     <FontAwesomeIcon icon={faPlus} />
                     Добавить 

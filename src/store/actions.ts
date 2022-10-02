@@ -1,10 +1,9 @@
-import { createPizza, subtractPizza, addPizza, deletePizza, deleteAllPizzas }from "./basket/slice"
+import { subtractPizza, addPizza, deletePizza, deleteAllPizzas }from "./basket/slice"
 import { changeFilter, changeSotring } from "./filter/slice"
 import { setCurrentPage, setItemsLimit } from "./pagination/slice"
 import { setQuery } from "./search/slice"
 
 export {
-    createPizza,
     subtractPizza,
     addPizza,
     deletePizza,
