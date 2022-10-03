@@ -10,12 +10,13 @@ interface SearchProps {
 }
 
 const Search: FC<SearchProps> = ({className}) => {
-    const { setQuery } = useActions();
+    const { setQuery , setCurrentPage } = useActions();
     const [ value, setValue ] = useState('')
     const { debouncedValue, setDebouncedValue } = useDebounce(value.trim(), 300);
     
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value)
+        setValue(e.target.value);
+        setCurrentPage(1)
     }
     
     setQuery(debouncedValue)

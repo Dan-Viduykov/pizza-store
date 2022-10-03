@@ -13,7 +13,7 @@ interface SortProps {
 const Sort: FC<SortProps> = ({className}) => {
     const [ active, setActive ] = useState(false);
     const [ sort, setSort ] = useState(sortingCategories.rating);
-    const { changeSotring } = useActions();
+    const { changeSotring, setCurrentPage } = useActions();
     const sortRef = useRef<HTMLDivElement>(null)
 
     // todo типизировать все onClick
@@ -35,6 +35,7 @@ const Sort: FC<SortProps> = ({className}) => {
     const handleClickItem = (idx: number, sortingTitle: string) => {
         setSort(sortingTitle);
         setActive(false);
+        setCurrentPage(1)
         changeSotring(Object.keys(sortingCategories)[idx] as TSort);
     }
 

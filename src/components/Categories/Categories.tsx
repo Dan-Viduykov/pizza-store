@@ -10,11 +10,12 @@ interface CategoriesProps {
 
 const Categories: FC<CategoriesProps> = ({className}) => {
     const [ activeIdx, setActiveIdx ] = useState(0);
-    const { changeFilter } = useActions();
+    const { changeFilter, setCurrentPage } = useActions();
     
     const handleClick = (idx: number) => {
         setActiveIdx(idx);
-        changeFilter(Object.keys(catogories)[idx] as TFilter)
+        setCurrentPage(1)
+        changeFilter(Object.keys(catogories)[idx] as TFilter);
     }
     
     const items = Object.values(catogories).map((item, idx) => {
