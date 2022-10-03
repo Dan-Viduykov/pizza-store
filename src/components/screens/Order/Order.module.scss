@@ -23,6 +23,13 @@
     font-size: 32px;
     line-height: 39px;
     letter-spacing: 0.01em;
+
+    @include display(540px) {
+        font-size: 24px;    
+    }
+    @include display(425px) {
+        font-size: 18px;    
+    }
 }
 
 .list {
@@ -37,6 +44,13 @@
     font-size: 22px;
     line-height: 27px;
     letter-spacing: 0.01em;
+
+    @include display(540px) {
+        font-size: 18px;    
+    }
+    @include display(425px) {
+        font-size: 16px;    
+    }
 
     &_black {
         font-weight: 700;
@@ -55,10 +69,21 @@
 }
 
 .button {
+
     &_clear {
         @extend .btn_back;
         border: none;
         font-weight: 400;
+
+        @include display(540px) {
+            padding: 15px 20px;
+            font-size: 14px;
+        }
+        @include display(425px) {
+            padding: 10px 15px;
+            font-size: 12px;
+        }
+
 
         &:hover {
             color: $black;
@@ -68,6 +93,14 @@
 
     &_back {
         @extend .btn_back;
+        @include display(540px) {
+            padding: 15px 20px;
+            font-size: 14px;
+        }
+        @include display(425px) {
+            padding: 12px 18px;
+            font-size: 12px;
+        }
 
         &:hover {
             background: $black;
@@ -82,5 +115,13 @@
 
     &_pay {
         @extend .btn_reverse;
+        @include display(540px) {
+            padding: 15px 20px;
+            font-size: 14px;
+        }
+        @include display(425px) {
+            padding: 12px 18px;
+            font-size: 12px;
+        }
     }
 }

@@ -8,8 +8,9 @@
     column-gap: 15px;
     position: relative;
 
-    @include display(425px) {
+    @include display(720px) {
         grid-template-columns: repeat(2, 1fr);
+        row-gap: 10px;
     }
 
     &::before {
@@ -38,10 +39,6 @@
     font-size: 22px;
     line-height: 27px;
     letter-spacing: 0.01em;
-
-    @include display(540px) {
-        font-size: 18px;
-    }
 }
 
 .options {
@@ -50,10 +47,6 @@
     line-height: 22px;
     letter-spacing: 0.01em;
     color: $gray; 
-
-    @include display(540px) {
-        font-size: 16px;
-    }
 }
 
 .counter {
@@ -61,17 +54,6 @@
     font-size: 22px;
     line-height: 27px;
     letter-spacing: 0.01em;
-
-    @include display(720px) {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    @include display(425px) {
-        display: block;   
-    }
 
     span {
         margin: 0 12px;
@@ -112,11 +94,4 @@
     font-size: 22px;
     line-height: 27px;
     letter-spacing: 0.01em;
-
-    @include display(540px) {
-        font-size: 18px;
-    }
-    @include display(425px) {
-        font-size: 22px;   
-    }
 }
