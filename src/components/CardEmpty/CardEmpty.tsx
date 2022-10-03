@@ -22,7 +22,7 @@ const CardEmpty: FC = () => {
                 Для того, чтобы заказать пиццу, перейди на главную страницу.
             </p>
             <Image className={styles.image} src={voidBasket} width={300} height={255} alt="" priority={false} />
-            <Button onClick={handleClick}>Вернуться назад</Button>
+            <Button mode={"back"} onClick={handleClick}>Вернуться назад</Button>
         </div>
     )
 }
