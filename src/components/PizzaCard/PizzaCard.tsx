@@ -1,15 +1,19 @@
 import { FC, MouseEvent, useState } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
+
 import { IPizza } from "@/services/pizza.types";
 import { selectBasketItemById } from "@/store/basket/selectors";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
+import { calcFinalPrice } from "@/utils/calcFinalPrice";
+
+import Button from "@/components/Button";
 import Modify from "./Modify";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import styles from "./PizzaCard.module.scss";
-import { useRouter } from "next/router";
-import { calcFinalPrice } from "@/utils/calcFinalPrice";
 
 interface PizzaCardProps {
     className?: string;
@@ -32,7 +36,7 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
     const addedCount = cardItem ? cardItem.count : 0;
     
     // !
-    const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    const handleClick = (event: any) => {
         event.stopPropagation();
         
         addPizza({
@@ -77,11 +81,11 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
             </div>
             <div className={styles.bottomBar}>
                 <span className={styles.price}>от {finalPrice} ₽</span>
-                <button className={styles.button} onClick={handleClick}>
+                <Button className={styles.button} onClick={handleClick}>
                     <FontAwesomeIcon icon={faPlus} />
                     Добавить 
                     {addedCount > 0 && <span>{addedCount}</span>}
-                </button>
+                </Button>
             </div>
         </div>
     )

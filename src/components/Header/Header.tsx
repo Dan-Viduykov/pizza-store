@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Search from "../Search";
 import logo from '@/assets/logo.png'
 import styles from "./Header.module.scss";
+import Button from "@/components/Button";
 
 interface HeaderProps {
     className?: string;
@@ -16,13 +17,21 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({className}) => {
     const router = useRouter();
     const { items, totalPrice } = useTypedSelector(selectBasket);
+    
+    const handleClickOdrer = () => {
+        router.push('/order');
+        console.log('click');
+    }
+    const handleClickIcon = () => {
+        router.push('/');
+    }
+    
     const totalItems = items.reduce((sum, item) => item.count + sum, 0);
-
     const search = router.pathname === '/' ? <Search className={styles.search} /> : null;
 
     return (
         <header className={`${styles.header} ${className}`}>
-            <button onClick={() => router.push('/')} className={styles.logo}>
+            <button onClick={handleClickIcon} className={styles.logo}>
                 <Image
                     src={logo}
                     layout={'responsive'}
@@ -35,10 +44,10 @@ const Header: FC<HeaderProps> = ({className}) => {
                 <p className={styles.description}>самая вкусная пицца во вселенной</p>
             </div>
             {search}
-            <button className={styles.button} onClick={() => router.push('/order')}>
+            <Button className={styles.button} mode={'reverse'} onClick={handleClickOdrer}>
                 <span>{totalPrice} ₽</span>
                 <span><FontAwesomeIcon icon={faCartShopping} /> {totalItems}</span>
-            </button>
+            </Button>
         </header>
     )
 }

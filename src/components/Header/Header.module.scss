@@ -1,4 +1,4 @@
-@import '@/styles/main.scss';
+@import "@/styles/main.scss";
 
 .header {
     padding-bottom: 40px;
@@ -74,7 +74,6 @@
 }
 
 .button {
-    @extend .btn_reverse;
     display: flex;
     justify-content: space-between;
     align-items: center;

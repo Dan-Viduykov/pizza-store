@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useGetOnePizzaQuery } from "@/services/pizza.api";
 import styles from "./Pizza.module.scss";
 import Modify from "@/components/PizzaCard/Modify";
+import Button from "@/components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
@@ -68,12 +69,12 @@ const Pizza: FC = () => {
                 </div>
                 <span>{finalPrice}</span>
                 <div className={styles.actions}>
-                    <button className={styles.button_back} onClick={handleClickBtnBack}>Вернуться назад</button>
-                    <button className={styles.button_add} onClick={handleClickBtnAdd}>
-                    <FontAwesomeIcon icon={faPlus} />
-                    Добавить 
-                    {ItemCount > 0 && <span> {ItemCount}</span>}
-                </button>
+                    <Button className={styles.button_back} mode={'back'} onClick={handleClickBtnBack}>Вернуться назад</Button>
+                    <Button className={styles.button_add} onClick={handleClickBtnAdd}>
+                        <FontAwesomeIcon icon={faPlus} />
+                        Добавить 
+                        {ItemCount > 0 && <span> {ItemCount}</span>}
+                    </Button>
                 </div>
             </div>
         </div>

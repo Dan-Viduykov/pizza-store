@@ -1,8 +1,10 @@
-.btn {
+@import "@/styles/main.scss";
+
+.button {
+    padding: 18px 25px;
     background: transparent;
     border: 2px solid $primary;
     border-radius: 30px;
-    padding: 18px 25px;
     font-size: 16px;
     line-height: 19px;
     font-weight: 700;   
@@ -15,8 +17,8 @@
     }
 }
 
-.btn_reverse {
-    @extend .btn;
+.button_reverse {
+    @extend .button;
     background: $primary;
     color: $white;
 
@@ -26,16 +28,16 @@
     }
 }
 
-.btn_circle {
-    @extend .btn;
+.button_circle {
+    @extend .button;
     width: 32px;
     height: 32px;
     padding: 0;
     color: $primary;
 }
 
-.btn_back {
-    @extend .btn;
+.button_back {
+    @extend .button;
     border-color: $gray;
     color: $gray;
 }

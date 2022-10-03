@@ -71,7 +71,6 @@
 .button {
 
     &_clear {
-        @extend .btn_back;
         border: none;
         font-weight: 400;
 
@@ -92,7 +91,6 @@
     }
 
     &_back {
-        @extend .btn_back;
         @include display(540px) {
             padding: 15px 20px;
             font-size: 14px;
@@ -114,7 +112,6 @@
     }
 
     &_pay {
-        @extend .btn_reverse;
         @include display(540px) {
             padding: 15px 20px;
             font-size: 14px;

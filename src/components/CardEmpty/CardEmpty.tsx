@@ -1,13 +1,18 @@
 import { FC } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Button from "@/components/Button";
 import voidBasket from "@/assets/voidBasket.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrownOpen } from "@fortawesome/free-regular-svg-icons";
 import styles from "./CardEmpty.module.scss";
 
 const CardEmpty: FC = () => {
-    const router = useRouter()
+    const router = useRouter();
+
+    const handleClick = () => {
+        router.back();
+    }
 
     return (
         <div className={styles.wrap}>
@@ -17,7 +22,7 @@ const CardEmpty: FC = () => {
                 Для того, чтобы заказать пиццу, перейди на главную страницу.
             </p>
             <Image className={styles.image} src={voidBasket} width={300} height={255} alt="" priority={false} />
-            <button className={styles.button} onClick={() => router.back()}>Вернуться назад</button>
+            <Button onClick={handleClick}>Вернуться назад</Button>
         </div>
     )
 }

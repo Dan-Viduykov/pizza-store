@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Image from "next/image";
 import { IBaksetPizza } from "@/store/basket/types";
+import Button from "@/components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useActions } from "@/hooks/useActions";
@@ -40,12 +41,31 @@ const OrderItem: FC<OrderItemProps> = ({className, product}) => {
                 <span className={styles.options}>{thickness}, {size} cм.</span>
             </div>
             <div className={styles.counter}>
-                <button className={styles.button_count} disabled={count <= 1} onClick={removeItem}><FontAwesomeIcon icon={faMinus}/></button>
+                <Button
+                    className={styles.button_count}
+                    mode={'circle'}
+                    disabled={count <= 1}
+                    onClick={removeItem}
+                >
+                    <FontAwesomeIcon icon={faMinus}/>
+                </Button>
                 <span>{count}</span>
-                <button className={styles.button_count} onClick={addItem}><FontAwesomeIcon icon={faPlus}/></button>
+                <Button
+                    className={styles.button_count}
+                    mode={'circle'}
+                    onClick={addItem}
+                >
+                    <FontAwesomeIcon icon={faPlus}/>
+                </Button>
             </div>
             <span className={styles.price}>{count * price} ₽</span>
-            <button className={styles.button_del} onClick={deleteItem}><FontAwesomeIcon icon={faXmark} /></button>
+            <Button
+                className={styles.button_del}
+                mode={'circle'}
+                onClick={deleteItem} 
+            >
+                <FontAwesomeIcon icon={faXmark} />
+            </Button>
         </div>
     )
 }

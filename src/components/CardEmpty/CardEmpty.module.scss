@@ -1,5 +1,4 @@
 @import "@/styles/main.scss";
-@import "@/styles/buttons";
 
 .wrap {
     max-width: 550px;
@@ -29,17 +28,4 @@
 
 .image {
     display: block;
-}
-
-.button {
-    @extend .btn;
-    margin-top: 75px;
-    border-color: $black;
-    background: $black;
-    color: $white;
-
-    &:hover {
-        background: transparent;
-        color: $black;
-    }
 }

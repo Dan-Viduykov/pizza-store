@@ -61,7 +61,6 @@
 }
 
 .button_count {
-    @extend .btn_circle;
     font-weight: 900;
 
     &:disabled {
@@ -77,7 +76,6 @@
 }
 
 .button_del {
-    @extend .btn_circle;
     padding-top: 2px;
     border-color: $gray;
     color: $gray;
