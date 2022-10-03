@@ -1,1 +1,57 @@
-@import "@/styles/main.scss"
+@import "@/styles/main.scss";
+@import "@/styles/buttons";
+
+.wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.img {
+
+}
+
+.content {
+    max-width: 600px;
+}
+
+.title {
+    margin-bottom: 22px;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 24px;
+    letter-spacing: 0.01em; 
+}
+
+.description {
+    margin-bottom: 40px;
+}
+
+.modifys {
+    max-width: 400px;
+    margin-bottom: 40px;
+    padding: 10px 15px;
+    background: #F3F3F3;
+    border-radius: 10px
+}
+
+.modify {
+    &:first-child {
+        margin-bottom: 20px;
+    }
+}
+
+.actions {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button_back {
+    @extend .btn_back;
+}
+
+.button_add {
+    @extend .btn;
+}

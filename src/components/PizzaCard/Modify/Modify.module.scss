@@ -16,6 +16,12 @@
     letter-spacing: 0.015em;
     color: #2C2C2C;
 
+    &:hover {
+        cursor: pointer;
+        background: rgba(#FFFFFF, 0.6);
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
+    }
+
     &_active {
         background: #FFFFFF;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);

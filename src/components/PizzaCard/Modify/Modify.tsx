@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 import styles from "./Modify.module.scss";
 
 interface ModifyProps {
@@ -9,11 +9,17 @@ interface ModifyProps {
 }
 
 const Modify: FC<ModifyProps> = ({className, modifys, active, setActive}) => {
+
+    const handleClick = (event: MouseEvent<HTMLLIElement>, idx: number) => {
+        event.stopPropagation();
+        setActive(idx)
+    }
+
     const items = modifys.map((item, index) => {
         return (
             <li
                 key={index}
-                onClick={() => setActive(index)}
+                onClick={(e) => handleClick(e, index)}
                 className={`${styles.item} ${active === index ? styles.item_active : null}`}
             >
                 {item}

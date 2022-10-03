@@ -2,12 +2,19 @@
 
 .card {
     overflow: hidden;
+
+    &:hover {
+
+        .img {
+            transform: translate(0, -8px);
+        }
+    }
 }
 
 .img {
     width: 90%;
-    margin-left: 10%;
-    margin-bottom: 11px;
+    margin: 8px 0 0 10%;
+    transition: 0.2s;
 }
 
 .title {

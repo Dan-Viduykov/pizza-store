@@ -1,16 +1,15 @@
-import { FC, useState } from "react";
+import { FC, MouseEvent, useState } from "react";
 import Image from "next/image";
 import { IPizza } from "@/services/pizza.types";
+import { selectBasketItemById } from "@/store/basket/selectors";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import Modify from "./Modify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import styles from "./PizzaCard.module.scss";
-import { selectCartItemById } from "@/store/basket/selectors";
-// todo почитать или посмотреть про Image next и исправить все предупреждения с ними
-// todo сделать функцию создания пиццы в корзину
-// todo добавить picture для всех картинок
+import { useRouter } from "next/router";
+import { calcFinalPrice } from "@/utils/calcFinalPrice";
 
 interface PizzaCardProps {
     className?: string;
@@ -21,19 +20,21 @@ const sizeValues = [26, 30, 40]
 const thicknessValues = ['тонкое', 'традиционное' ]
 
 const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
+    const router = useRouter()
     const { id, imageUrl, title, price } = pizza;
     const [ activeThickness, setActiveThickness ] = useState(0);
     const [ activeSize, setActiveSize ] = useState(0);
     const { addPizza } = useActions();
-
-    const finalPrice = Math.floor(price + 
-                                (activeThickness === 0 ? 0 : price * 0.1) +
-                                (sizeValues[activeSize] === 26 ? 0 : sizeValues[activeSize] === 30 ?price*0.1 : price*0.3));
-
-    const cardItem = useTypedSelector(selectCartItemById(id));
+    
+    const finalPrice = calcFinalPrice({startPrice: price, activeThickness, sizeValues, activeSize})
+        
+    const cardItem = useTypedSelector(selectBasketItemById(id));
     const addedCount = cardItem ? cardItem.count : 0;
-
-    const handleClick = () => {
+    
+    // !
+    const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation();
+        
         addPizza({
             id: `${id}/${thicknessValues[activeThickness]}/${sizeValues[activeSize]}`,
             title,
@@ -44,9 +45,9 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
             count: 0,
         })
     }
-
+    
     return (
-        <div className={`${styles.card} ${className}`}>
+        <div className={`${styles.card} ${className}`} onClick={() => router.push(`/pizza/${id}`)}>
             <div className={styles.img}>
                 <Image
                     loader={() => imageUrl}
@@ -57,7 +58,7 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
                     layout="responsive"
                     priority={true}
                     unoptimized
-                />
+                    />
             </div>
             <h4 className={styles.title}>{title}</h4>
             <div className={styles.modifys}>
@@ -66,13 +67,13 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
                     modifys={thicknessValues}
                     active={activeThickness}
                     setActive={setActiveThickness}
-                />
+                    />
                 <Modify
                     className={styles.modify}
                     modifys={sizeValues}
                     active={activeSize}
                     setActive={setActiveSize}
-                />
+                    />
             </div>
             <div className={styles.bottomBar}>
                 <span className={styles.price}>от {finalPrice} ₽</span>
@@ -87,3 +88,7 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
 }
 
 export default PizzaCard
+
+// todo почитать или посмотреть про Image next и исправить все предупреждения с ними
+// todo сделать функцию создания пиццы в корзину
+// todo добавить picture для всех картинок
