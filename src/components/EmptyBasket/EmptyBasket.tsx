@@ -5,9 +5,9 @@ import Button from "@/components/Button";
 import voidBasket from "@/assets/voidBasket.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrownOpen } from "@fortawesome/free-regular-svg-icons";
-import styles from "./CardEmpty.module.scss";
+import styles from "./EmptyBasket.module.scss";
 
-const CardEmpty: FC = () => {
+const EmptyBasket: FC = () => {
     const router = useRouter();
 
     const handleClick = () => {
@@ -27,4 +27,4 @@ const CardEmpty: FC = () => {
     )
 }
 
-export default CardEmpty
+export default EmptyBasket

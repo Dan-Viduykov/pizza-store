@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useRouter } from "next/router";
 import { selectBasket } from "@/store/basket/selectors";
 import OrderList from "@/components/OrderList";
-import CardEmpty from "@/components/CardEmpty";
+import EmptyBasket from "@/components/EmptyBasket";
 import { useActions } from "@/hooks/useActions";
 import Button from "@/components/Button";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
@@ -17,7 +17,7 @@ const Order: FC = () => {
     const totalItems = items.reduce((sum, item) => sum + item.count, 0)
 
     if (!items.length) { 
-        return <CardEmpty />
+        return <EmptyBasket />
     }
 
     // todo узнать как и зачем примерняется callback и memo, и удалить все ненужные перерисовки

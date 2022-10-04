@@ -40,4 +40,9 @@
     @extend .button;
     border-color: $gray;
     color: $gray;
+
+    &:hover {
+        background: $black;
+        border-color: $black;
+    }
 }
