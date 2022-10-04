@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { selectBasket } from "@/store/basket/selectors";
 import OrderList from "@/components/OrderList";
 import EmptyBasket from "@/components/EmptyBasket";
+import Title from "@/components/UI/Title";
 import { useActions } from "@/hooks/useActions";
 import Button from "@/components/Button";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
@@ -20,13 +21,11 @@ const Order: FC = () => {
         return <EmptyBasket />
     }
 
-    // todo узнать как и зачем примерняется callback и memo, и удалить все ненужные перерисовки
-
     return ( 
         <div className={styles.wrap}>
             <div className={styles.top}>
                 <FontAwesomeIcon icon={faCartShopping} />
-                <h3 className={styles.title}>Корзина</h3>
+                <Title title={"h3"} className={styles.title}>Корзина</Title>
                 <Button className={styles.button_clear} mode={"back"} onClick={() => deleteAllPizzas()}>
                     <FontAwesomeIcon icon={faTrashAlt} />
                     <span>Очистить корзину</span>

@@ -4,6 +4,7 @@ import PizzaList from "@/components/PizzaList";
 import Categories from "@/components/Categories";
 import Pagination from "@/components/Pagination";
 import styles from "./Home.module.scss";
+import Title from "@/components/UI/Title";
 
 const Home: FC = () => {
     return (
@@ -12,7 +13,7 @@ const Home: FC = () => {
                 <Categories className={styles.categories} />
                 <Sort className={styles.sorting} />
             </div>
-            <h2 className={styles.title}>Все пиццы</h2>
+            <Title title={"h2"} className={styles.title}>Все пиццы</Title>
             <PizzaList />
             <Pagination />
         </div>

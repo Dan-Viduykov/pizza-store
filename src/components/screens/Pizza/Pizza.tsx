@@ -5,6 +5,7 @@ import { useGetOnePizzaQuery } from "@/services/pizza.api";
 import styles from "./Pizza.module.scss";
 import Modify from "@/components/PizzaCard/Modify";
 import Button from "@/components/Button";
+import Title from "@/components/UI/Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
@@ -51,7 +52,7 @@ const Pizza: FC = () => {
         <div className={styles.wrap}>
             <Image className={styles.img} src={data.imageUrl} loader={() => data.imageUrl} alt={data.title} width={`500px`} height={`500px`} />
             <div className={styles.content}>
-                <h1 className={styles.title}>{data.title}</h1>
+                <Title title={"h3"} className={styles.title}>{data.title}</Title>
                 <p className={styles.description}>{data.title}</p>
                 <div className={styles.modifys}>   
                     <Modify
@@ -82,7 +83,3 @@ const Pizza: FC = () => {
 }
 
 export default Pizza
-
-// todo вынести бизнес логику в отдельные компоненты
-// todo сделать лоадер
-// todo сделать компонент кнопки

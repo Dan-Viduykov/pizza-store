@@ -16,7 +16,7 @@ const Sort: FC<SortProps> = ({className}) => {
     const { changeSotring, setCurrentPage } = useActions();
     const sortRef = useRef<HTMLDivElement>(null)
 
-    // todo типизировать все onClick
+    
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (sortRef.current && !event.composedPath().includes(sortRef.current)) {

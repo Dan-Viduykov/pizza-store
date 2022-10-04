@@ -6,7 +6,7 @@ const initialState: basketState = {
   totalPrice: 0
 }
 
-// todo типизировать все акшены
+
 
 const mathTotalPrice = (items: IBaksetPizza[]) => items.reduce((sum, item) => sum + (item.price * item.count), 0)
 

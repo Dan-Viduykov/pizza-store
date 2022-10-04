@@ -9,6 +9,7 @@ import Search from "../Search";
 import logo from '@/assets/logo.png'
 import styles from "./Header.module.scss";
 import Button from "@/components/Button";
+import Title from "@/components/UI/Title";
 
 interface HeaderProps {
     className?: string;
@@ -40,7 +41,7 @@ const Header: FC<HeaderProps> = ({className}) => {
                 />
             </button>
             <div className={styles.info}>
-                <h1 className={styles.title}>REACT PIZZA</h1>
+                <Title className={styles.title} title={'h1'}>REACT PIZZA</Title>
                 <p className={styles.description}>самая вкусная пицца во вселенной</p>
             </div>
             {search}

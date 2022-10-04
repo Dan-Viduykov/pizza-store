@@ -1,4 +1,4 @@
-import { FC, MouseEvent, useState } from "react";
+import { FC, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
@@ -8,6 +8,7 @@ import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { calcFinalPrice } from "@/utils/calcFinalPrice";
 
+import Title from "@/components/UI/Title";
 import Button from "@/components/Button";
 import Modify from "./Modify";
 
@@ -64,7 +65,7 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
                     unoptimized
                     />
             </div>
-            <h4 className={styles.title}>{title}</h4>
+            <Title title={"h2"} className={styles.title}>{title}</Title>
             <div className={styles.modifys}>
                 <Modify
                     className={styles.modify}
@@ -93,6 +94,3 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
 
 export default PizzaCard
 
-// todo почитать или посмотреть про Image next и исправить все предупреждения с ними
-// todo сделать функцию создания пиццы в корзину
-// todo добавить picture для всех картинок

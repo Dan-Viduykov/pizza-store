@@ -2,6 +2,7 @@ import { FC } from "react";
 import Image from "next/image";
 import { IBaksetPizza } from "@/store/basket/types";
 import Button from "@/components/Button";
+import Title from "@/components/UI/Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useActions } from "@/hooks/useActions";
@@ -37,7 +38,7 @@ const OrderItem: FC<OrderItemProps> = ({className, product}) => {
                 />
             </div>
             <div className={styles.info}>
-                <h4 className={styles.title}>{title}</h4>
+                <Title title={"h4"} className={styles.title}>{title}</Title>
                 <span className={styles.options}>{thickness}, {size} cм.</span>
             </div>
             <div className={styles.counter}>

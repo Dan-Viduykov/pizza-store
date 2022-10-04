@@ -2,6 +2,7 @@ import { FC } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Button from "@/components/Button";
+import Title from "@/components/UI/Title";
 import voidBasket from "@/assets/voidBasket.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrownOpen } from "@fortawesome/free-regular-svg-icons";
@@ -16,7 +17,7 @@ const EmptyBasket: FC = () => {
 
     return (
         <div className={styles.wrap}>
-            <h2 className={styles.title}>Корзина пустая <FontAwesomeIcon icon={faFaceFrownOpen} /></h2>
+            <Title title={"h2"} className={styles.title}>Корзина пустая <FontAwesomeIcon icon={faFaceFrownOpen} /></Title>
             <p className={styles.description}>
                 Вероятней всего, вы не заказывали ещё пиццу.
                 Для того, чтобы заказать пиццу, перейди на главную страницу.
