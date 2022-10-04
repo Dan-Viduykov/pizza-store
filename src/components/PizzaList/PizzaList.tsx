@@ -6,6 +6,7 @@ import PizzasError from "@/components/PizzasError";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import styles from "./PizzaList.module.scss";
 import { useActions } from "@/hooks/useActions";
+import EmptyPizzas from "../EmptyPizzas";
 
 const PizzaList: FC = () => {
     const {
@@ -32,10 +33,14 @@ const PizzaList: FC = () => {
     const skeletons = [...new Array(itemsLimit)].map((item, idx) => <Skeleton key={idx} />)
     const pizzasElements = pizzas?.map(item => <PizzaCard key={item.id} pizza={item} />)
 
-    const content = isLoading || isFetching ? skeletons : pizzasElements 
+    const content = isLoading || isFetching ? skeletons : pizzasElements
 
     if (isError) {
         return <PizzasError />
+    }
+
+    if (pizzasElements?.length === 0) {
+        return <EmptyPizzas />
     }
 
     return (

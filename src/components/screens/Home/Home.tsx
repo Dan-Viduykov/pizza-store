@@ -2,8 +2,8 @@ import { FC } from "react";
 import Sort from "@/components/Sort";
 import PizzaList from "@/components/PizzaList";
 import Categories from "@/components/Categories";
-import styles from "./Home.module.scss";
 import Pagination from "@/components/Pagination";
+import styles from "./Home.module.scss";
 
 const Home: FC = () => {
     return (
