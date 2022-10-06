@@ -1,6 +1,6 @@
 import { FC } from "react";
 import OrderItem from "@/components/OrderItem";
-import { selectBasket } from "@/store/basket/selectors";
+import { selectBasket } from "@/store/reducers/basket/selectors";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import styles from "./OrderList.module.scss";
 

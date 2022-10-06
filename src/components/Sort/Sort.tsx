@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareUp, faSquareCaretDown } from "@fortawesome/free-regular-svg-icons";
 import styles from "./Sort.module.scss";
 import { useActions } from "@/hooks/useActions";
-import { sortingCategories } from "@/store/filter/constans";
-import { TSort } from "@/store/filter/types";
+import { sortingCategories } from "@/store/reducers/filter/constans";
+import { TSort } from "@/store/reducers/filter/types";
 
 interface SortProps {
     className?: string;

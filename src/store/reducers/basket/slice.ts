@@ -6,9 +6,9 @@ const initialState: basketState = {
   totalPrice: 0
 }
 
-
-
-const mathTotalPrice = (items: IBaksetPizza[]) => items.reduce((sum, item) => sum + (item.price * item.count), 0)
+const CalcTotalPrice = (state: basketState) => {
+  state.totalPrice = state.items.reduce((sum, item) => sum + (item.price * item.count), 0);
+}
 
 export const basketSlice = createSlice({
   name: 'basket',
@@ -26,19 +26,19 @@ export const basketSlice = createSlice({
         });
       }
 
-      state.totalPrice = mathTotalPrice(state.items);
+      CalcTotalPrice(state);
     },
 
     subtractPizza: (state, action: PayloadAction<string>) => {
       const findItem = state.items.find(item => item.id === action.payload);
 
       if (findItem) findItem.count--;
-      state.totalPrice = mathTotalPrice(state.items)
+      CalcTotalPrice(state);
     },
 
     deletePizza: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter(item => item.id !== action.payload);
-      state.totalPrice = mathTotalPrice(state.items)
+      CalcTotalPrice(state);
     }, 
 
     deleteAllPizzas: (state) => {

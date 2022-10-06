@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Image from "next/image";
-import { IBaksetPizza } from "@/store/basket/types";
-import Button from "@/components/Button";
+import { IBaksetPizza } from "@/store/reducers/basket/types";
+import Button from "@/components/UI/Button";
 import Title from "@/components/UI/Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";

@@ -3,13 +3,13 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 
 import { IPizza } from "@/services/pizza.types";
-import { selectBasketItemById } from "@/store/basket/selectors";
+import { selectBasketItemById } from "@/store/reducers/basket/selectors";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { calcFinalPrice } from "@/utils/calcFinalPrice";
 
 import Title from "@/components/UI/Title";
-import Button from "@/components/Button";
+import Button from "@/components/UI/Button";
 import Modify from "./Modify";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -2,13 +2,13 @@ import { FC } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
-import { selectBasket } from "@/store/basket/selectors";
+import { selectBasket } from "@/store/reducers/basket/selectors";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Search from "../Search";
+import Search from "@/components/UI/Search";
 import logo from '@/assets/logo.png'
 import styles from "./Header.module.scss";
-import Button from "@/components/Button";
+import Button from "@/components/UI/Button";
 import Title from "@/components/UI/Title";
 
 interface HeaderProps {

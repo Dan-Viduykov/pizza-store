@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 import { useActions } from "@/hooks/useActions";
-import { catogories } from "@/store/filter/constans";
+import { catogories } from "@/store/reducers/filter/constans";
 import styles from "./Categories.module.scss";
-import { TFilter } from "@/store/filter/types";
+import { TFilter } from "@/store/reducers/filter/types";
 
 interface CategoriesProps {
     className?: string;

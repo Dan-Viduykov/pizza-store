@@ -1,4 +1,4 @@
-export { subtractPizza, addPizza, deletePizza, deleteAllPizzas } from "./basket/slice";
-export { changeFilter, changeSotring } from "./filter/slice";
-export { setCurrentPage, setItemsLimit, setItemsCount, setPageCount } from "./pagination/slice";
-export { setQuery } from "./search/slice";
+export { subtractPizza, addPizza, deletePizza, deleteAllPizzas } from "@/store/reducers/basket/slice";
+export { changeFilter, changeSotring } from "@/store/reducers/filter/slice";
+export { setCurrentPage, setItemsLimit, setItemsCount, setPageCount } from "@/store/reducers/pagination/slice";
+export { setQuery } from "@/store/reducers/search/slice";

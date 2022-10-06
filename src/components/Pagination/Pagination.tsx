@@ -1,6 +1,6 @@
 import { FC } from "react";
 import ReactPaginate from "react-paginate";
-import { selectPagination } from "@/store/pagination/selectors";
+import { selectPagination } from "@/store/reducers/pagination/selectors";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";

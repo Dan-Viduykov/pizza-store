@@ -4,12 +4,12 @@ import { useRouter } from "next/router";
 import { useGetOnePizzaQuery } from "@/services/pizza.api";
 import styles from "./Pizza.module.scss";
 import Modify from "@/components/PizzaCard/Modify";
-import Button from "@/components/Button";
+import Button from "@/components/UI/Button";
 import Title from "@/components/UI/Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
-import { selectBasketItemById } from "@/store/basket/selectors";
+import { selectBasketItemById } from "@/store/reducers/basket/selectors";
 import { calcFinalPrice } from "@/utils/calcFinalPrice";
 import { useActions } from "@/hooks/useActions";
 

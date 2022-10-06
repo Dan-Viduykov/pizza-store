@@ -2,10 +2,10 @@ import { createWrapper } from 'next-redux-wrapper';
 import { configureStore } from '@reduxjs/toolkit'
 import { pizzaApi } from '@/services/pizza.api'
 
-import { basketReducer } from './basket/slice';
-import { paginationReducer } from './pagination/slice';
-import { searchReducer } from './search/slice';
-import { filterReducer } from './filter/slice';
+import { basketReducer } from '@/store/reducers/basket/slice';
+import { paginationReducer } from '@/store/reducers/pagination/slice';
+import { searchReducer } from '@/store/reducers/search/slice';
+import { filterReducer } from '@/store/reducers/filter/slice';
 
 export function makeStore() {
     return configureStore({
