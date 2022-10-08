@@ -1,9 +1,8 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, MouseEvent, useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareUp, faSquareCaretDown } from "@fortawesome/free-regular-svg-icons";
 import styles from "./Sort.module.scss";
 import { useActions } from "@/hooks/useActions";
-import { sortingCategories } from "@/store/reducers/filter/constans";
 import { TSort } from "@/store/reducers/filter/types";
 
 interface SortProps {
@@ -11,6 +10,7 @@ interface SortProps {
 }
 
 const Sort: FC<SortProps> = ({className}) => {
+    const { sortingCategories } = require('@/store/reducers/filter/constans')
     const [ active, setActive ] = useState(false);
     const [ sort, setSort ] = useState(sortingCategories.rating);
     const { changeSotring, setCurrentPage } = useActions();
@@ -18,7 +18,7 @@ const Sort: FC<SortProps> = ({className}) => {
 
     
     useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
+        const handleClickOutside = (event: globalThis.MouseEvent): void => {
             if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
                 setActive(false);
             }
@@ -32,16 +32,18 @@ const Sort: FC<SortProps> = ({className}) => {
     const handleClickButton = () => {
         setActive(state => !state)
     }
-    const handleClickItem = (idx: number, sortingTitle: string) => {
-        setSort(sortingTitle);
+    const handleClickItem = (event: MouseEvent<HTMLLIElement>, sortingTitle: string) => {
+        // ! ================== 
+        const idx = Object.values(sortingCategories).indexOf(event.currentTarget.textContent!) 
+        setSort(Object.values(sortingCategories)[idx] as TSort);
         setActive(false);
         setCurrentPage(1)
         changeSotring(Object.keys(sortingCategories)[idx] as TSort);
     }
 
-    const sortingItems = Object.values(sortingCategories).map((item: string, idx) => {
+    const sortingItems = Object.values<TSort>(sortingCategories).map((item: string, idx) => {
         return (
-            <li key={idx} onClick={() => handleClickItem(idx, item)}>
+            <li key={idx} onClick={(event) => handleClickItem(event, item)}>
                 {item}
             </li>
         )

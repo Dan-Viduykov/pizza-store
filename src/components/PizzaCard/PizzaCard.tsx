@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, MouseEvent, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
@@ -37,7 +37,7 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
     const addedCount = cardItem ? cardItem.count : 0;
     
     // !
-    const handleClick = (event: any) => {
+    const handleClickBtnAdd = (event: MouseEvent<HTMLButtonElement>) => {
         event.stopPropagation();
         
         addPizza({
@@ -50,9 +50,12 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
             count: 0,
         })
     }
+    const handleClickPizza = () => {
+        router.push(`/pizza/${id}`)
+    }
     
     return (
-        <div className={`${styles.card} ${className}`} onClick={() => router.push(`/pizza/${id}`)}>
+        <div className={`${styles.card} ${className}`} onClick={handleClickPizza}>
             <div className={styles.img}>
                 <Image
                     loader={() => imageUrl}
@@ -82,7 +85,7 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
             </div>
             <div className={styles.bottomBar}>
                 <span className={styles.price}>от {finalPrice} ₽</span>
-                <Button className={styles.button} onClick={handleClick}>
+                <Button className={styles.button} onClick={handleClickBtnAdd}>
                     <FontAwesomeIcon icon={faPlus} />
                     Добавить 
                     {addedCount > 0 && <span>{addedCount}</span>}

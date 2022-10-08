@@ -17,6 +17,13 @@ const Order: FC = () => {
     const { deleteAllPizzas } = useActions();
     const totalItems = items.reduce((sum, item) => sum + item.count, 0)
 
+    const handleClickDelete = () => {
+        deleteAllPizzas()
+    }
+    const handleClickBack = () => {
+        router.back()
+    }
+
     if (!items.length) { 
         return <EmptyBasket />
     }
@@ -26,7 +33,7 @@ const Order: FC = () => {
             <div className={styles.top}>
                 <FontAwesomeIcon icon={faCartShopping} />
                 <Title title={"h3"} className={styles.title}>Корзина</Title>
-                <Button className={styles.button_clear} mode={"back"} onClick={() => deleteAllPizzas()}>
+                <Button className={styles.button_clear} mode={"back"} onClick={handleClickDelete}>
                     <FontAwesomeIcon icon={faTrashAlt} />
                     <span>Очистить корзину</span>
                 </Button>
@@ -37,7 +44,7 @@ const Order: FC = () => {
                 <p>Сумма заказа: <span className={styles.info_orange}>{totalPrice} ₽</span></p>
             </div>
             <div className={styles.actions}>
-                <Button className={styles.button_back} mode={"back"} onClick={() => router.back()}>
+                <Button className={styles.button_back} mode={"back"} onClick={handleClickBack}>
                     <FontAwesomeIcon icon={faChevronLeft} />
                     <span>Вернуться назад</span>
                 </Button>

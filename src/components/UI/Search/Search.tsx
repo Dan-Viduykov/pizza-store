@@ -18,6 +18,9 @@ const Search: FC<SearchProps> = ({className}) => {
         setValue(e.target.value);
         setCurrentPage(1)
     }
+    const handleClick = () => {
+        setValue('')
+    }
     
     setQuery(debouncedValue)
 
@@ -36,7 +39,7 @@ const Search: FC<SearchProps> = ({className}) => {
                     <FontAwesomeIcon
                         className={styles.iconClear}
                         icon={faXmark}
-                        onClick={() => setValue('')}
+                        onClick={handleClick}
                     />    
                 </button>
                 : null
