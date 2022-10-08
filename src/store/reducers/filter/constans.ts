@@ -1,4 +1,4 @@
-export const catogories = {
+export const filters = {
   all :'Всe',
   meat :'Мясные',
   vegan :'Вегитарианские',
@@ -6,7 +6,7 @@ export const catogories = {
   spicy :'Острые',
 };
   
-export const sortingCategories = {
+export const sorts = {
   rating: 'популярности',
   price: 'цене',
   title: 'алфавиту'

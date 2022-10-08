@@ -1,38 +1,31 @@
-import { FC, MouseEvent, useState } from "react";
+import { FC, useState } from "react";
 import { useActions } from "@/hooks/useActions";
 import { TFilter } from "@/store/reducers/filter/types";
 import styles from "./Categories.module.scss";
+import { filters } from "@/store/reducers/filter/constans";
 
 interface CategoriesProps {
     className?: string;
 }
 
 const Categories: FC<CategoriesProps> = ({className}) => {
-    const { categories } = require('@/store/reducers/filter/constans')
     const [ activeIdx, setActiveIdx ] = useState(0);
     const { changeFilter, setCurrentPage } = useActions();
     
-    const handleClick = (event: MouseEvent<HTMLLIElement>) => {
-        // ! ================== 
-        let idx = 0;
-
-        if (categories) {
-            idx = Object.values(categories).indexOf(event.currentTarget.textContent!) 
-        }
-
+    const handleClick = (idx: number) => {
         setActiveIdx(idx);
         setCurrentPage(1)
-        changeFilter(Object.keys(categories)[idx] as TFilter);
+        changeFilter(Object.keys(filters)[idx] as TFilter);
     }
     
-    const items = Object.values<TFilter>(categories).map((item, idx) => {
+    const items = Object.values(filters).map((item, idx) => {
         return (
             <li key={idx}
                 className={`
                     ${styles.item}
                     ${activeIdx === idx ? styles.item_active : false}
                 `}
-                onClick={handleClick}
+                onClick={() => handleClick(idx)}
             >
                 {item}
             </li>

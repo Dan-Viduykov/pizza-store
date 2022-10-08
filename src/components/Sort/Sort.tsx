@@ -1,18 +1,18 @@
 import { FC, MouseEvent, useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareUp, faSquareCaretDown } from "@fortawesome/free-regular-svg-icons";
-import styles from "./Sort.module.scss";
 import { useActions } from "@/hooks/useActions";
+import { sorts } from "@/store/reducers/filter/constans";
 import { TSort } from "@/store/reducers/filter/types";
+import styles from "./Sort.module.scss";
 
 interface SortProps {
     className?: string;
 }
 
 const Sort: FC<SortProps> = ({className}) => {
-    const { sortingCategories } = require('@/store/reducers/filter/constans')
     const [ active, setActive ] = useState(false);
-    const [ sort, setSort ] = useState(sortingCategories.rating);
+    const [ sort, setSort ] = useState(sorts.rating);
     const { changeSotring, setCurrentPage } = useActions();
     const sortRef = useRef<HTMLDivElement>(null)
 
@@ -32,18 +32,16 @@ const Sort: FC<SortProps> = ({className}) => {
     const handleClickButton = () => {
         setActive(state => !state)
     }
-    const handleClickItem = (event: MouseEvent<HTMLLIElement>, sortingTitle: string) => {
-        // ! ================== 
-        const idx = Object.values(sortingCategories).indexOf(event.currentTarget.textContent!) 
-        setSort(Object.values(sortingCategories)[idx] as TSort);
+    const handleClickItem = (idx: number, title: string) => {
+        setSort(title);
         setActive(false);
         setCurrentPage(1)
-        changeSotring(Object.keys(sortingCategories)[idx] as TSort);
+        changeSotring(Object.keys(sorts)[idx] as TSort);
     }
 
-    const sortingItems = Object.values<TSort>(sortingCategories).map((item: string, idx) => {
+    const sortingItems = Object.values(sorts).map((item: string, idx) => {
         return (
-            <li key={idx} onClick={(event) => handleClickItem(event, item)}>
+            <li key={idx} onClick={(event) => handleClickItem(idx, item)}>
                 {item}
             </li>
         )
