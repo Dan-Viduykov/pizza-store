@@ -4,14 +4,25 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    @include display(720px) {
+        display: block;
+        text-align: center;
+    }
 }
 
 .img {
-
 }
 
 .content {
-    max-width: 600px;
+    max-width: 400px;
+    width: 400px;
+
+    @include display(720px) {
+        max-width: 100%;   
+        width: auto;
+        margin: 0 auto;
+    }
 }
 
 .title {
@@ -30,7 +41,11 @@
     margin-bottom: 40px;
     padding: 10px 15px;
     background: #F3F3F3;
-    border-radius: 10px
+    border-radius: 10px;
+
+    @include display(720px) {
+        max-width: 100%;
+    }
 }
 
 .modify {
@@ -39,11 +54,50 @@
     }
 }
 
+.finalPrice {
+    font-size: 24px;
+    text-align: right;
+
+    span {
+        font-size: 26px;
+        font-weight: 700;
+        color: $primary;
+
+        @include display(960px) {
+            font-size: 24px;
+        }
+        @include display(540px) {
+            font-size: 22px;
+        }
+        @include display(540px) {
+            font-size: 20px;
+        }
+    }
+
+    @include display(960px) {
+        font-size: 20px;
+    }
+    @include display(540px) {
+        font-size: 18px;
+    }
+    @include display(540px) {
+        font-size: 16px;
+    }
+}
+
 .actions {
     margin-top: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.button_add, 
+.button_back {
+    @include display(960px) {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
 }
 
 .button_back {
