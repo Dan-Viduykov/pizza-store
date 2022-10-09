@@ -1,16 +1,17 @@
 import { FC, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+
 import { useGetOnePizzaQuery } from "@/services/pizza.api";
 import { selectBasketItemById } from "@/store/reducers/basket/selectors";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
+import { calcFinalPrice } from "@/utils/calcFinalPrice";
 
 import Modify from "@/components/PizzaCard/Modify";
 import Button from "@/components/UI/Button";
 import Title from "@/components/UI/Title";
 
-import { calcFinalPrice } from "@/utils/calcFinalPrice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Pizza.module.scss";
@@ -22,19 +23,18 @@ const Pizza: FC = () => {
     const router = useRouter();
     const { data } = useGetOnePizzaQuery(String(router.query.id));
     const { addPizza } = useActions()
-
     const basketItem = useTypedSelector(selectBasketItemById(String(router.query.id)))
     
     const [ activeThickness, setActiveThickness ] = useState(0);
     const [ activeSize, setActiveSize ] = useState(0);
     const ItemCount = basketItem ? basketItem.count : 0;
-
+    
     let finalPrice = data ? calcFinalPrice({startPrice: data.price, activeThickness, sizeValues, activeSize}) : 0
-
+    
     if (!data) {
         return <p>идёт загрузка...</p>
     }
-
+    
     const handleClickBtnBack = () => {
         router.back()
     }

@@ -32,14 +32,12 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
     const { addPizza } = useActions();
     
     const finalPrice = calcFinalPrice({startPrice: price, activeThickness, sizeValues, activeSize})
-        
     const cardItem = useTypedSelector(selectBasketItemById(id));
     const addedCount = cardItem ? cardItem.count : 0;
     
-    // !
     const handleClickBtnAdd = (event: MouseEvent<HTMLButtonElement>) => {
         event.stopPropagation();
-        
+
         addPizza({
             id: `${id}/${thicknessValues[activeThickness]}/${sizeValues[activeSize]}`,
             title,
