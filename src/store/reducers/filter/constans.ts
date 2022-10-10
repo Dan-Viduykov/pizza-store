@@ -1,4 +1,7 @@
-export const filters = {
+import { TSort } from '@/store/reducers/filter/types';
+import { TFilter } from '@/store/reducers/filter/types';
+
+export const filters: Record<TFilter, string> = {
   all :'Всe',
   meat :'Мясные',
   vegan :'Вегитарианские',
@@ -6,7 +9,7 @@ export const filters = {
   spicy :'Острые',
 };
   
-export const sorts = {
+export const sorts: Record<TSort, string> = {
   rating: 'популярности',
   price: 'цене',
   title: 'алфавиту'
