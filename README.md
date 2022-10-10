@@ -12,4 +12,6 @@ Front-end онлайн магазин пиццы. Демо - https://pizza-store
     <li>NextJS</li>
 </ul>
 
+---
+
 # Документации пока нет :)
