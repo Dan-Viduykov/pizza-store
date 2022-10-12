@@ -15,6 +15,7 @@ import Modify from "./Modify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import styles from "./PizzaCard.module.scss";
+import { changeSizeImg } from "@/utils/changeSizeImg";
 
 interface PizzaCardProps {
     className?: string;
@@ -56,8 +57,8 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
         <div className={`${styles.card} ${className}`} onClick={handleClickPizza}>
             <div className={styles.img}>
                 <Image
-                    loader={() => imageUrl}
-                    src={imageUrl}
+                    loader={() => changeSizeImg(imageUrl, '366x366')}
+                    src={changeSizeImg(imageUrl, '366x366')}
                     alt={title}
                     width={'100%'}
                     height={'100%'}

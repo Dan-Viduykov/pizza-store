@@ -15,6 +15,7 @@ import Title from "@/components/UI/Title";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Pizza.module.scss";
+import { changeSizeImg } from "@/utils/changeSizeImg";
 
 const sizeValues = [26, 30, 40]
 const thicknessValues = ['тонкое', 'традиционное' ]
@@ -52,14 +53,21 @@ const Pizza: FC = () => {
 
     return (
         <div className={styles.wrap}>
-            <Image
+            <picture className={styles.img}>
+                <source srcSet={changeSizeImg(data.imageUrl, '760x760')} media="(min-width: 1020px)" />
+                <source srcSet={changeSizeImg(data.imageUrl, '584x584')} media="(min-width: 940px)" />
+                <source srcSet={changeSizeImg(data.imageUrl, '366x366')} media="(min-width: 720px)" />
+                <source srcSet={changeSizeImg(data.imageUrl, '366x366')} media="(max-width: 425px)" />
+                <img src={changeSizeImg(data.imageUrl, '760x760')} alt="" />
+            </picture>
+            {/* <Image
                 className={styles.img}
                 src={data.imageUrl}
                 loader={() => data.imageUrl}
                 alt={data.title}
                 width={`500px`}
                 height={`500px`}
-            />
+            /> */}
             <div className={styles.content}>
                 <Title title={"h3"} className={styles.title}>{data.title}</Title>
                 <p className={styles.description}>{data.title}</p>

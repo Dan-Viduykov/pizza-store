@@ -1,4 +1,4 @@
-import { FC, MouseEvent, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareUp, faSquareCaretDown } from "@fortawesome/free-regular-svg-icons";
 import { useActions } from "@/hooks/useActions";

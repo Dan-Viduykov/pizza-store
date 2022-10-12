@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useActions } from "@/hooks/useActions";
 import styles from "./OrderItem.module.scss";
+import { changeSizeImg } from "@/utils/changeSizeImg";
 
 interface OrderItemProps {
     className?: string;
@@ -29,8 +30,8 @@ const OrderItem: FC<OrderItemProps> = ({className, product}) => {
         <div className={`${styles.card} ${className}`}>
             <div className={styles.img}>
                 <Image
-                    src={imageUrl}
-                    loader={() => imageUrl}
+                    src={changeSizeImg(imageUrl)}
+                    loader={() => changeSizeImg(imageUrl)}
                     width={`100%`}
                     height={`100%`}
                     priority={false}
