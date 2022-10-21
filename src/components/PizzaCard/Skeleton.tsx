@@ -9,8 +9,8 @@ const Skeleton: FC<SkeletonProps> = ({className}) => (
   <ContentLoader
     className={className}
     speed={2}
-    width={309}
-    height={489}
+    width={'100%'}
+    height={'100%'}
     viewBox="0 0 309 489"
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
