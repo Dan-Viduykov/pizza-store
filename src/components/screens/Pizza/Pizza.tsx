@@ -16,6 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Pizza.module.scss";
 import { changeSizeImg } from "@/utils/changeSizeImg";
+import TextField from "@/components/UI/TextField";
 
 const sizeValues = [26, 30, 40]
 const thicknessValues = ['тонкое', 'традиционное' ]
@@ -33,7 +34,7 @@ const Pizza: FC = () => {
     let finalPrice = data ? calcFinalPrice({startPrice: data.price, activeThickness, sizeValues, activeSize}) : 0
     
     if (!data) {
-        return <p>идёт загрузка...</p>
+        return <TextField>идёт загрузка...</TextField>
     }
     
     const handleClickBtnBack = () => {
@@ -70,7 +71,7 @@ const Pizza: FC = () => {
             /> */}
             <div className={styles.content}>
                 <Title title={"h3"} className={styles.title}>{data.title}</Title>
-                <p className={styles.description}>{data.title}</p>
+                <TextField className={styles.description}>{data.title}</TextField>
                 <div className={styles.modifys}>   
                     <Modify
                         className={styles.modify}
@@ -85,7 +86,7 @@ const Pizza: FC = () => {
                         setActive={setActiveSize}
                     />
                 </div>
-                <p className={styles.finalPrice}>стоимость за одну пиццу: <span>{finalPrice} ₽</span></p>
+                <TextField className={styles.finalPrice}>стоимость за одну пиццу: <span>{finalPrice} ₽</span></TextField>
                 <div className={styles.actions}>
                     <Button
                         className={styles.button_back}
