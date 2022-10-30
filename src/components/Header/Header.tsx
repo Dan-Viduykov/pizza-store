@@ -10,6 +10,7 @@ import logo from '@/assets/logo.png'
 import styles from "./Header.module.scss";
 import Button from "@/components/UI/Button";
 import Title from "@/components/UI/Title";
+import TextField from "../UI/TextField";
 
 interface HeaderProps {
     className?: string;
@@ -42,7 +43,7 @@ const Header: FC<HeaderProps> = ({className}) => {
             </button>
             <div className={styles.info}>
                 <Title className={styles.title} title={'h1'}>REACT PIZZA</Title>
-                <p className={styles.description}>самая вкусная пицца во вселенной</p>
+                <TextField textStyle={'subtitle'}>самая вкусная пицца во вселенной</TextField>
             </div>
             {search}
             <Button className={styles.button} mode={'reverse'} onClick={handleClickOdrer}>

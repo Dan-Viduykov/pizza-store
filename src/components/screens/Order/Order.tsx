@@ -10,6 +10,7 @@ import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faChevronLeft, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Order.module.scss";
+import TextField from "@/components/UI/TextField";
 
 const Order: FC = () => {
     const router = useRouter();
@@ -40,8 +41,8 @@ const Order: FC = () => {
             </div>
             <OrderList className={styles.list} />
             <div className={styles.info}>
-                <p>Всего пицц: <span className={styles.info_black}>{totalItems} шт.</span></p>
-                <p>Сумма заказа: <span className={styles.info_orange}>{totalPrice} ₽</span></p>
+                <TextField className={styles.text}>Всего пицц: <span className={styles.info_black}>{totalItems} шт.</span></TextField>
+                <TextField className={styles.text}>Сумма заказа: <span className={styles.info_orange}>{totalPrice} ₽</span></TextField>
             </div>
             <div className={styles.actions}>
                 <Button className={styles.button_back} mode={"back"} onClick={handleClickBack}>

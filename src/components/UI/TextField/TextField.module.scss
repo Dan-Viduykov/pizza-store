@@ -2,7 +2,7 @@
 
 .text {
     font-size: 16px;
-    line-height: 19;
+    line-height: 19px;
     font-weight: 700;
     letter-spacing: 0.015em;
     color: $black;
@@ -10,24 +10,24 @@
 
 .text_14 {
     font-size: 14px;
-    line-height: 17;
+    line-height: 17px;
 }
 
-.filter_white {
+.text_gray {
+    color: $gray;
+}
+
+.text_white {
     color: $white;
+}
+
+.text_primaryColor {
+    color: $primary;
 }
 
 .subtitle {
     font-weight: 400;
     color: $gray;
-}
-
-.button {
-    color: $white;
-
-    &_primary {
-        color: $primary;
-    }
 }
 
 .subtitle_18 {

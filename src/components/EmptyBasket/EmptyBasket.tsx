@@ -7,6 +7,7 @@ import voidBasket from "@/assets/voidBasket.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrownOpen } from "@fortawesome/free-regular-svg-icons";
 import styles from "./EmptyBasket.module.scss";
+import TextField from "../UI/TextField";
 
 const EmptyBasket: FC = () => {
     const router = useRouter();
@@ -18,10 +19,10 @@ const EmptyBasket: FC = () => {
     return (
         <div className={styles.wrap}>
             <Title title={"h2"} className={styles.title}>Корзина пустая <FontAwesomeIcon icon={faFaceFrownOpen} /></Title>
-            <p className={styles.description}>
+            <TextField textStyle={'subtitle_18'}>
                 Вероятней всего, вы не заказывали ещё пиццу.
                 Для того, чтобы заказать пиццу, перейди на главную страницу.
-            </p>
+            </TextField>
             <Image className={styles.image} src={voidBasket} width={300} height={255} alt="" priority={false} />
             <Button mode={"back"} onClick={handleClick}>Вернуться назад</Button>
         </div>
