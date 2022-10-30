@@ -3,8 +3,8 @@ import { paginationState } from './types';
 
 const initialState: paginationState = {
     currentPage: 1,
-    itemsLimit: 4,
-    itemsCount: 0,
+    itemsLimitOnPage: 4,
+    allCount: 0,
     pageCount: 1
 }
 
@@ -15,11 +15,11 @@ export const paginationSlice = createSlice({
         setCurrentPage: (state, action: PayloadAction<number>) => {
             state.currentPage = action.payload
         },
-        setItemsLimit: (state, action: PayloadAction<number>) => {
-            state.itemsLimit = action.payload
+        setitemsLimitOnPage: (state, action: PayloadAction<number>) => {
+            state.itemsLimitOnPage = action.payload
         },
-        setItemsCount: (state, action: PayloadAction<number>) => {
-            state.itemsCount = action.payload
+        setAllCount: (state, action: PayloadAction<number>) => {
+            state.allCount = action.payload
         },
         setPageCount: (state, action: PayloadAction<number>) => {
             state.pageCount = action.payload
@@ -29,8 +29,8 @@ export const paginationSlice = createSlice({
 
 export const {
     setCurrentPage,
-    setItemsLimit,
-    setItemsCount,
+    setitemsLimitOnPage,
+    setAllCount,
     setPageCount
 } = paginationSlice.actions;
 

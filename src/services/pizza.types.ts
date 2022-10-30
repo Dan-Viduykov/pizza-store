@@ -1,16 +1,23 @@
 export interface IPizza {
-    id: string;
-    imageUrl: string;
-    title: string;
-    price: number;
+    _id: string;
     category: string;
+    description: string;
+    imageUrl: string;
+    price: number;
     rating: number;
+    title: string;
 }
 
 export interface IBaseQuery {
-    sorting?: string;
-    filter?: string;
-    query?: string;
-    page?: number;
-    limit?: number;
+    count?: number;
+    offset?: number;
+    filterBy?: "meat" | "vegan" | "grill" | "spicy" | 'all';
+    sortBy?: 'rating' | 'title' | 'price';
+    trend?: 'asc' | 'desc';
+    search?: string;
+}
+
+export interface IServerResponce {
+    count: number;
+    data: IPizza[]
 }

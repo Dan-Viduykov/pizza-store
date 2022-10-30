@@ -5,7 +5,7 @@ export const filters: Record<TFilter, string> = {
   all :'Всe',
   meat :'Мясные',
   vegan :'Вегитарианские',
-  gril :'Гриль',
+  grill :'Гриль',
   spicy :'Острые',
 };
   

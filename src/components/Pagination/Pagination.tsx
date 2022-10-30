@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./Pagination.module.scss";
 
 const Pagination: FC = () => {
-    const { itemsLimit, pageCount } = useTypedSelector(selectPagination)
+    const { itemsLimitOnPage, pageCount } = useTypedSelector(selectPagination)
     const { setCurrentPage } = useActions();
 
     return (
@@ -18,7 +18,7 @@ const Pagination: FC = () => {
             nextLabel={<FontAwesomeIcon icon={faAngleRight} />}
             previousLabel={<FontAwesomeIcon icon={faAngleLeft} />}
             onPageChange={(event) => setCurrentPage(event.selected + 1)}
-            pageRangeDisplayed={itemsLimit}
+            pageRangeDisplayed={itemsLimitOnPage}
             pageCount={pageCount}
         />
     )

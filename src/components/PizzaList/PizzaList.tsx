@@ -1,47 +1,39 @@
-import React, { FC } from "react";
-import { useGetAllPizzasQuery } from "@/services/pizza.api";
+import { FC } from "react"
+import { useGetAllPizzasQuery } from "@/services/pizza.api"
+import { useActions } from "@/hooks/useActions";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
+import EmptyPizzas from "@/components/EmptyPizzas";
 import PizzaCard from "@/components/PizzaCard";
 import Skeleton from "@/components/PizzaCard/Skeleton";
 import PizzasError from "@/components/PizzasError";
-import { useTypedSelector } from "@/hooks/useTypedSelector";
 import styles from "./PizzaList.module.scss";
-import { useActions } from "@/hooks/useActions";
-import EmptyPizzas from "../EmptyPizzas";
 
 const PizzaList: FC = () => {
+    const { setPageCount, setAllCount } = useActions();
     const {
         filterReducer: { filter, sorting },
-        searchReducer: { query },
-        paginationReducer: { currentPage, itemsLimit }
+        paginationReducer: { currentPage, itemsLimitOnPage },
+        searchReducer: { query }
     } = useTypedSelector(state => state);
-    const { setItemsCount, setPageCount } = useActions()
-    
-    const { isLoading, isError, isFetching, data: pizzas } = useGetAllPizzasQuery({
-        sorting,
-        filter,
-        query,
-        page: currentPage,
-        limit: itemsLimit
+
+    const { isLoading, isFetching, isError, data } = useGetAllPizzasQuery({
+        filterBy: filter,
+        sortBy: sorting,
+        offset: (currentPage - 1) * itemsLimitOnPage,
+        search: query
     })
-    const { data } = useGetAllPizzasQuery({sorting, filter, query})
-    
+
     if (data) {
-        setItemsCount(data.length)
-        setPageCount(Math.ceil(data.length / itemsLimit))
-    }
-    
-    const skeletons = [...new Array(itemsLimit)].map((item, idx) => <Skeleton key={idx} />)
-    const pizzasElements = pizzas?.map(item => <PizzaCard key={item.id} pizza={item} />)
-
-    const content = isLoading || isFetching ? skeletons : pizzasElements
-
-    if (isError) {
-        return <PizzasError />
+        setPageCount(data.count / itemsLimitOnPage),
+        setAllCount(Math.ceil(data.count / itemsLimitOnPage))
     }
 
-    if (pizzasElements?.length === 0) {
-        return <EmptyPizzas />
-    }
+    const pizzaSkeletons = [...new Array(itemsLimitOnPage)].map((item, idx) => <Skeleton key={idx} />)
+    const pizzasElements = data?.data.map(item => <PizzaCard key={item._id} pizza={item} />)
+    const content = isLoading || isFetching ? pizzaSkeletons : pizzasElements;
+
+    if (isError) { return <PizzasError /> }
+    if (pizzasElements?.length === 0) { return <EmptyPizzas /> }
 
     return (
         <ul className={styles.list}>

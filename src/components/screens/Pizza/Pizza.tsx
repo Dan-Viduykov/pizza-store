@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-import { useGetOnePizzaQuery } from "@/services/pizza.api";
+import { useGetPizzaByIdQuery } from "@/services/pizza.api";
 import { selectBasketItemById } from "@/store/reducers/basket/selectors";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
@@ -22,7 +22,7 @@ const thicknessValues = ['тонкое', 'традиционное' ]
 
 const Pizza: FC = () => {
     const router = useRouter();
-    const { data } = useGetOnePizzaQuery(String(router.query.id));
+    const { data } = useGetPizzaByIdQuery(String(router.query.id));
     const { addPizza } = useActions()
     const basketItem = useTypedSelector(selectBasketItemById(String(router.query.id)))
     

@@ -1,6 +1,6 @@
 export interface paginationState {
     currentPage: number;
-    itemsLimit: number;
-    itemsCount: number;
+    itemsLimitOnPage: number;
+    allCount: number;
     pageCount: number;
 }
