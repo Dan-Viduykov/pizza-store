@@ -7,12 +7,14 @@ interface LayoutProps {
     children: ReactNode;
 }
 
-const Layout: FC<LayoutProps> = ({children}) => {
+const Layout: FC<LayoutProps> = ({ children }) => {
     return (
         <div className={styles.layout}>
             <Container>
                 <Header className={styles.layout__header} />
-                {children}
+                <main>
+                    {children}
+                </main>
             </Container>
         </div>
     )

@@ -5,11 +5,11 @@ interface ContainerProps {
     children: ReactNode;
 }
 
-const Container: FC<ContainerProps> = ({children}) => {
+const Container: FC<ContainerProps> = ({ children }) => {
     return (
-        <main className={styles.container}>
+        <div className={styles.container}>
             {children}
-        </main>
+        </div>
     )
 }
 
