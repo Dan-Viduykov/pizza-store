@@ -1,14 +1,14 @@
 import { FC, useState } from "react";
-import { useActions } from "@/hooks/useActions";
 import { TFilter } from "@/store/reducers/filter/types";
-import styles from "./Categories.module.scss";
 import { filters } from "@/store/reducers/filter/constans";
+import { useActions } from "@/hooks/useActions";
+import styles from "./Filters.module.scss";
 
-interface CategoriesProps {
+interface FiltersProps {
     className?: string;
 }
 
-const Categories: FC<CategoriesProps> = ({className}) => {
+const Filters: FC<FiltersProps> = ({className}) => {
     const [ activeIdx, setActiveIdx ] = useState(0);
     const { changeFilter, setCurrentPage } = useActions();
     
@@ -33,7 +33,7 @@ const Categories: FC<CategoriesProps> = ({className}) => {
     });
 
     return (
-        <div className={`${styles.categories} ${className}`}>
+        <div className={`${styles.filters} ${className}`}>
             <ul className={styles.list}>
                 {items}
             </ul>
@@ -41,4 +41,4 @@ const Categories: FC<CategoriesProps> = ({className}) => {
     )
 }
 
-export default Categories
+export default Filters
