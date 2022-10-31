@@ -1,7 +1,8 @@
-import type { GetServerSideProps, NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
+import { getAllPizzas } from '@/services/pizza.api'
+import { makeStore } from '@/store/store'
 import Layout from '@/components/Layout'
 import Home from '@/components/screens/Home'
-import { wrapper } from '@/store/store'
 
 const Index: NextPage = () => {
   return (
@@ -11,16 +12,25 @@ const Index: NextPage = () => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(store => async ctx => {
-  return { props: {} }
-})
+export const getStaticProps: GetStaticProps = async () => {
+	const store = makeStore();
+	const state = store.getState();
 
+	const { filter, sorting } = state.filterReducer;
+	const { currentPage, itemsLimitOnPage } = state.paginationReducer;
+	const { query } = state.searchReducer;
+
+  if (query.length !== 0) {
+    await store.dispatch(getAllPizzas.initiate({
+      filterBy: filter,
+      sortBy: sorting,
+      offset: (currentPage - 1) * itemsLimitOnPage,
+      search: query
+    }));
+  } else {
+    await store.dispatch(getAllPizzas.initiate({ search: query }));
+  }
+
+	return { props: { initialReduxState: store.getState() } };
+};
 export default Index
-
-// todo вынести бизнес логику в отдельные компоненты
-// todo почитать или посмотреть про Image next и исправить все предупреждения с ними
-// todo добавить picture для всех картинок
-// todo узнать как и зачем примерняется callback и memo, и удалить все ненужные перерисовки ( где есть children можно даже не пытаться )
-// todo сделать лоадер
-// todo переделать так, чтобы работало коректное разделение кода, как объяснял Ulbi_TV
-// todo getServerSideProps

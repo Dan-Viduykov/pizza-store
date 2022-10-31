@@ -1,10 +1,10 @@
 import { FC, useEffect } from "react";
 import { useRouter } from "next/router";
 import Title from "@/components/UI/Title";
+import TextField from "@/components/UI/TextField";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceDizzy } from "@fortawesome/free-solid-svg-icons";
 import styles from "./PizzasError.module.scss";
-import TextField from "../UI/TextField";
 
 const PizzasError: FC = () => {
     const { back } = useRouter()

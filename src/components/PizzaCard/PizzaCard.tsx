@@ -27,20 +27,20 @@ const thicknessValues = ['тонкое', 'традиционное' ]
 
 const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
     const router = useRouter()
-    const { id, imageUrl, title, price } = pizza;
+    const { _id, imageUrl, title, price } = pizza;
     const [ activeThickness, setActiveThickness ] = useState(0);
     const [ activeSize, setActiveSize ] = useState(0);
     const { addPizza } = useActions();
     
     const finalPrice = calcFinalPrice({startPrice: price, activeThickness, sizeValues, activeSize})
-    const cardItem = useTypedSelector(selectBasketItemById(id));
+    const cardItem = useTypedSelector(selectBasketItemById(_id));
     const addedCount = cardItem ? cardItem.count : 0;
     
     const handleClickBtnAdd = (event: MouseEvent<HTMLButtonElement>) => {
         event.stopPropagation();
 
         addPizza({
-            id: `${id}/${thicknessValues[activeThickness]}/${sizeValues[activeSize]}`,
+            id: `${_id}/${thicknessValues[activeThickness]}/${sizeValues[activeSize]}`,
             title,
             price: finalPrice,
             imageUrl,
@@ -50,7 +50,7 @@ const PizzaCard: FC<PizzaCardProps> = ({className, pizza}) => {
         })
     }
     const handleClickPizza = () => {
-        router.push(`/pizza/${id}`)
+        router.push(`/pizza/${_id}`)
     }
     
     return (

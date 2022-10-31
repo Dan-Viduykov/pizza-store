@@ -31,3 +31,8 @@ export const {
   useGetAllPizzasQuery,
   useGetPizzaByIdQuery
 } = pizzaApi
+
+export const {
+  getAllPizzas,
+  getPizzaById
+} = pizzaApi.endpoints;

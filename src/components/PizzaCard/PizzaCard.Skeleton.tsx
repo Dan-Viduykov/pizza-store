@@ -1,11 +1,11 @@
 import React, { FC } from "react"
 import ContentLoader from "react-content-loader"
 
-interface SkeletonProps {
+interface PizzaCardSkeletonProps {
   className?: string;
 }
 
-const Skeleton: FC<SkeletonProps> = ({className}) => (
+const PizzaCardSkeleton: FC<PizzaCardSkeletonProps> = ({className}) => (
   <ContentLoader
     className={className}
     speed={2}
@@ -23,4 +23,4 @@ const Skeleton: FC<SkeletonProps> = ({className}) => (
   </ContentLoader>
 )
 
-export default Skeleton
+export default PizzaCardSkeleton
