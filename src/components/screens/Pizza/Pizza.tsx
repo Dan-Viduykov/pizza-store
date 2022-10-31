@@ -61,14 +61,6 @@ const Pizza: FC = () => {
                 <source srcSet={changeSizeImg(data.imageUrl, '366x366')} media="(max-width: 425px)" />
                 <img src={changeSizeImg(data.imageUrl, '760x760')} alt="" />
             </picture>
-            {/* <Image
-                className={styles.img}
-                src={data.imageUrl}
-                loader={() => data.imageUrl}
-                alt={data.title}
-                width={`500px`}
-                height={`500px`}
-            /> */}
             <div className={styles.content}>
                 <Title title={"h3"} className={styles.title}>{data.title}</Title>
                 <TextField className={styles.description}>{data.title}</TextField>
