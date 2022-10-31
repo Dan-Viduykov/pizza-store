@@ -63,7 +63,7 @@ const Pizza: FC = () => {
             </picture>
             <div className={styles.content}>
                 <Title title={"h3"} className={styles.title}>{data.title}</Title>
-                <TextField className={styles.description}>{data.title}</TextField>
+                <TextField className={styles.description}>{data.description}</TextField>
                 <div className={styles.modifys}>   
                     <Modify
                         className={styles.modify}
