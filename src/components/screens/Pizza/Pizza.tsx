@@ -59,7 +59,7 @@ const Pizza: FC = () => {
                 <source srcSet={changeSizeImg(data.imageUrl, '584x584')} media="(min-width: 940px)" />
                 <source srcSet={changeSizeImg(data.imageUrl, '366x366')} media="(min-width: 720px)" />
                 <source srcSet={changeSizeImg(data.imageUrl, '366x366')} media="(max-width: 425px)" />
-                <img src={changeSizeImg(data.imageUrl, '760x760')} alt="" />
+                <img src={changeSizeImg(data.imageUrl, '760x760')} alt={data.title} />
             </picture>
             <div className={styles.content}>
                 <Title title={"h3"} className={styles.title}>{data.title}</Title>
