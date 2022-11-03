@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faChevronLeft, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Order.module.scss";
 import TextField from "@/components/UI/TextField";
+import Head from "next/head";
 
 const Order: FC = () => {
     const router = useRouter();
@@ -30,28 +31,36 @@ const Order: FC = () => {
     }
 
     return ( 
-        <div className={styles.wrap}>
-            <div className={styles.top}>
-                <FontAwesomeIcon icon={faCartShopping} />
-                <Title title={"h3"} className={styles.title}>Корзина</Title>
-                <Button className={styles.button_clear} mode={"back"} onClick={handleClickDelete}>
-                    <FontAwesomeIcon icon={faTrashAlt} />
-                    <span>Очистить корзину</span>
-                </Button>
+        <>
+            <Head>
+                <title>корзина покупки пицц</title>
+                <meta name="description" content="Наши пиццы, одобрит даже твоя бабушка)" />
+                <meta name="keywords" content="пицца, заказать пиццу, заказать еду, заказать покушать, " />
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+            </Head>
+            <div className={styles.wrap}>
+                <div className={styles.top}>
+                    <FontAwesomeIcon icon={faCartShopping} />
+                    <Title title={"h3"} className={styles.title}>Корзина</Title>
+                    <Button className={styles.button_clear} mode={"back"} onClick={handleClickDelete}>
+                        <FontAwesomeIcon icon={faTrashAlt} />
+                        <span>Очистить корзину</span>
+                    </Button>
+                </div>
+                <OrderList className={styles.list} />
+                <div className={styles.info}>
+                    <TextField className={styles.text}>Всего пицц: <span className={styles.info_black}>{totalItems} шт.</span></TextField>
+                    <TextField className={styles.text}>Сумма заказа: <span className={styles.info_orange}>{totalPrice} ₽</span></TextField>
+                </div>
+                <div className={styles.actions}>
+                    <Button className={styles.button_back} mode={"back"} onClick={handleClickBack}>
+                        <FontAwesomeIcon icon={faChevronLeft} />
+                        <span>Вернуться назад</span>
+                    </Button>
+                    <Button mode={"reverse"} className={styles.button_pay}>Оплатить сейчас</Button>
+                </div>
             </div>
-            <OrderList className={styles.list} />
-            <div className={styles.info}>
-                <TextField className={styles.text}>Всего пицц: <span className={styles.info_black}>{totalItems} шт.</span></TextField>
-                <TextField className={styles.text}>Сумма заказа: <span className={styles.info_orange}>{totalPrice} ₽</span></TextField>
-            </div>
-            <div className={styles.actions}>
-                <Button className={styles.button_back} mode={"back"} onClick={handleClickBack}>
-                    <FontAwesomeIcon icon={faChevronLeft} />
-                    <span>Вернуться назад</span>
-                </Button>
-                <Button mode={"reverse"} className={styles.button_pay}>Оплатить сейчас</Button>
-            </div>
-        </div>
+        </>
     )
 }
 

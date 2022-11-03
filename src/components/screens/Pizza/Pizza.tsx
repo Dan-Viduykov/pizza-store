@@ -17,6 +17,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Pizza.module.scss";
 import { changeSizeImg } from "@/utils/changeSizeImg";
 import TextField from "@/components/UI/TextField";
+import Head from "next/head";
 
 const sizeValues = [26, 30, 40]
 const thicknessValues = ['тонкое', 'традиционное' ]
@@ -53,47 +54,55 @@ const Pizza: FC = () => {
     }
 
     return (
-        <div className={styles.wrap}>
-            <picture className={styles.img}>
-                <source srcSet={changeSizeImg(data.imageUrl, '760x760')} media="(min-width: 1020px)" />
-                <source srcSet={changeSizeImg(data.imageUrl, '584x584')} media="(min-width: 940px)" />
-                <source srcSet={changeSizeImg(data.imageUrl, '366x366')} media="(min-width: 720px)" />
-                <source srcSet={changeSizeImg(data.imageUrl, '366x366')} media="(max-width: 425px)" />
-                <img src={changeSizeImg(data.imageUrl, '760x760')} alt={data.title} />
-            </picture>
-            <div className={styles.content}>
-                <Title title={"h3"} className={styles.title}>{data.title}</Title>
-                <TextField className={styles.description}>{data.description}</TextField>
-                <div className={styles.modifys}>   
-                    <Modify
-                        className={styles.modify}
-                        modifys={thicknessValues}
-                        active={activeThickness}
-                        setActive={setActiveThickness}
-                    />
-                    <Modify
-                        className={styles.modify}
-                        modifys={sizeValues}
-                        active={activeSize}
-                        setActive={setActiveSize}
-                    />
-                </div>
-                <TextField className={styles.finalPrice}>стоимость за одну пиццу: <span>{finalPrice} ₽</span></TextField>
-                <div className={styles.actions}>
-                    <Button
-                        className={styles.button_back}
-                        mode={'back'} 
-                        onClick={handleClickBtnBack}>   
-                        Вернуться назад
-                    </Button>
-                    <Button className={styles.button_add} onClick={handleClickBtnAdd}>
-                        <FontAwesomeIcon icon={faPlus} />
-                        Добавить 
-                        {ItemCount > 0 && <span> {ItemCount}</span>}
-                    </Button>
+        <>
+            <Head>
+                <title>Пицца</title>
+                <meta name="description" content="Наши пиццы, одобрит даже твоя бабушка)" />
+                <meta name="keywords" content="пицца, заказать пиццу, заказать еду, заказать покушать, " />
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+            </Head>
+            <div className={styles.wrap}>
+                <picture className={styles.img}>
+                    <source srcSet={changeSizeImg(data.imageUrl, '760x760')} media="(min-width: 1020px)" />
+                    <source srcSet={changeSizeImg(data.imageUrl, '584x584')} media="(min-width: 940px)" />
+                    <source srcSet={changeSizeImg(data.imageUrl, '366x366')} media="(min-width: 720px)" />
+                    <source srcSet={changeSizeImg(data.imageUrl, '366x366')} media="(max-width: 425px)" />
+                    <img src={changeSizeImg(data.imageUrl, '760x760')} alt={data.title} />
+                </picture>
+                <div className={styles.content}>
+                    <Title title={"h3"} className={styles.title}>{data.title}</Title>
+                    <TextField className={styles.description}>{data.description}</TextField>
+                    <div className={styles.modifys}>   
+                        <Modify
+                            className={styles.modify}
+                            modifys={thicknessValues}
+                            active={activeThickness}
+                            setActive={setActiveThickness}
+                        />
+                        <Modify
+                            className={styles.modify}
+                            modifys={sizeValues}
+                            active={activeSize}
+                            setActive={setActiveSize}
+                        />
+                    </div>
+                    <TextField className={styles.finalPrice}>стоимость за одну пиццу: <span>{finalPrice} ₽</span></TextField>
+                    <div className={styles.actions}>
+                        <Button
+                            className={styles.button_back}
+                            mode={'back'} 
+                            onClick={handleClickBtnBack}>   
+                            Вернуться назад
+                        </Button>
+                        <Button className={styles.button_add} onClick={handleClickBtnAdd}>
+                            <FontAwesomeIcon icon={faPlus} />
+                            Добавить 
+                            {ItemCount > 0 && <span> {ItemCount}</span>}
+                        </Button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

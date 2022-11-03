@@ -1,13 +1,16 @@
 import { FC } from "react";
+import Head from "next/head";
+
+import { useGetAllPizzasQuery } from "@/services/pizza.api";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
+import { useActions } from "@/hooks/useActions";
+
 import Sort from "@/components/Sort";
 import PizzaList from "@/components/PizzaList";
 import Filters from "@/components/Filters";
 import Pagination from "@/components/Pagination";
 import styles from "./Home.module.scss";
 import Title from "@/components/UI/Title";
-import { useTypedSelector } from "@/hooks/useTypedSelector";
-import { useGetAllPizzasQuery } from "@/services/pizza.api";
-import { useActions } from "@/hooks/useActions";
 
 const Home: FC = () => {
     const { setPageCount, setAllCount } = useActions();
@@ -30,21 +33,29 @@ const Home: FC = () => {
     }
 
     return (
-        <div className={styles.home}>
-            <div className={styles.actions}>
-                <Filters className={styles.categories} />
-                <Sort className={styles.sorting} />
+        <>
+            <Head>
+                <title>Онлайн магазин пицц</title>
+                <meta name="description" content="Наши пиццы, одобрит даже твоя бабушка)" />
+                <meta name="keywords" content="пицца, заказать пиццу, заказать еду, заказать покушать, " />
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+            </Head>
+            <div className={styles.home}>
+                <div className={styles.actions}>
+                    <Filters className={styles.categories} />
+                    <Sort className={styles.sorting} />
+                </div>
+                <Title title={"h2"} className={styles.title}>Все пиццы</Title>
+                <PizzaList
+                    isLoading={isLoading}
+                    isFetching={isFetching}
+                    isError={isError}
+                    data={data}
+                    itemsCount={itemsLimitOnPage}
+                />
+                <Pagination />
             </div>
-            <Title title={"h2"} className={styles.title}>Все пиццы</Title>
-            <PizzaList
-                isLoading={isLoading}
-                isFetching={isFetching}
-                isError={isError}
-                data={data}
-                itemsCount={itemsLimitOnPage}
-            />
-            <Pagination />
-        </div>
+        </>
     )
 }
 
